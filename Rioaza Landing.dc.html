@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:'Inter',system-ui,sans-serif;color:#0F172A;background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  *{box-sizing:border-box}
+  a{color:#1E3A8A;text-decoration:none}
+  a:hover{color:#0F172A}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  input,select,textarea{font-family:inherit;outline:none}
+  .fustat{font-family:'Fustat','Inter',sans-serif}
+  .schib{font-family:'Schibsted Grotesk','Inter',sans-serif;text-transform:uppercase;letter-spacing:0.03em}
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden;background:#fff">
+
+<!-- NAV -->
+<nav style="position:sticky;top:0;z-index:50;width:100%;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #E2E8F0">
+  <div style="max-width:1440px;margin:0 auto;padding:16px 120px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+    <a href="#" style="display:flex;align-items:baseline;gap:6px">
+      <span class="fustat" style="font-weight:800;font-size:24px;letter-spacing:-0.48px;color:#0F172A;line-height:1">RIOAZA</span>
+      <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#84CC16;transform:translateY(-2px)"></span>
+      <span class="schib" style="margin-left:8px;font-size:9px;font-weight:500;color:#64748B">Multiservicios</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:32px">
+      <a href="#soluciones" style="font-size:15px;font-weight:500;color:#334155">Soluciones</a>
+      <a href="#catalogo" style="font-size:15px;font-weight:500;color:#334155">Catálogo</a>
+      <a href="#sectores" style="font-size:15px;font-weight:500;color:#334155;display:inline-flex;align-items:center;gap:4px">Sectores <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <a href="#recursos" style="font-size:15px;font-weight:500;color:#334155;display:inline-flex;align-items:center;gap:4px">Recursos <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <a href="#contacto" style="font-size:15px;font-weight:500;color:#334155">Contacto</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="#" style="font-size:14px;font-weight:500;color:#334155;padding:10px 14px">Iniciar sesión</a>
+      <a href="#cotizar" style="display:inline-flex;align-items:center;gap:6px;background:#F97316;color:#fff;font-weight:600;font-size:14px;padding:12px 20px;border-radius:12px;box-shadow:0 4px 12px rgba(15,23,42,0.08),0 2px 4px rgba(15,23,42,0.04)">
+        {{ ctaPrimary }}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="position:relative;background:#0F172A;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:
+    radial-gradient(900px circle at 85% 90%, rgba(101,163,13,0.18), transparent 60%),
+    radial-gradient(700px circle at 10% 15%, rgba(30,58,138,0.35), transparent 65%),
+    radial-gradient(500px circle at 50% 100%, rgba(249,115,22,0.05), transparent 60%);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1.2px, transparent 1.2px);background-size:32px 32px;pointer-events:none"></div>
+
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:140px 120px 120px;display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(15,23,42,0.6);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.08);border-radius:9999px;padding:6px 14px 6px 6px">
+        <span style="display:inline-flex;align-items:center;gap:5px;background:#020617;color:#fff;border-radius:9999px;padding:4px 10px;font-size:12px;font-weight:600">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5.5 0.5L2 5.5H5L4.5 9.5L8 4.5H5L5.5 0.5Z" fill="#F97316"/></svg>
+          Nuevo
+        </span>
+        <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.9)">{{ heroBadge }}</span>
+      </div>
+
+      <h1 class="fustat" style="margin:34px 0 0;font-weight:800;font-size:88px;line-height:0.95;letter-spacing:-3.5px;color:#fff">
+        {{ heroL1 }}<br>
+        {{ heroL2 }}<br>
+        {{ heroL3a }} <span style="color:#84CC16">{{ heroL3b }}</span>
+      </h1>
+
+      <p style="margin:24px 0 0;max-width:540px;font-size:20px;line-height:1.55;letter-spacing:-0.3px;color:rgba(255,255,255,0.72)">{{ heroSubtitle }}</p>
+
+      <div style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#cotizar" style="display:inline-flex;align-items:center;gap:8px;background:#F97316;color:#fff;font-weight:600;font-size:16px;height:56px;padding:0 28px;border-radius:12px;box-shadow:0 4px 12px rgba(15,23,42,0.16)">
+          {{ ctaPrimary }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);color:#fff;font-weight:600;font-size:16px;height:56px;padding:0 28px;border-radius:12px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.42 14.13c-.23.64-1.34 1.23-1.86 1.27-.5.04-1.03.22-3.46-.75-2.91-1.16-4.76-4.14-4.9-4.34-.14-.19-1.17-1.57-1.17-2.99 0-1.42.75-2.13 1.02-2.42.26-.29.57-.36.76-.36.19 0 .38.01.55.02.18.01.42-.07.65.5.23.58.79 2 .86 2.14.07.14.11.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.38-.42.51-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.7-.82.89-1.1.19-.28.38-.23.64-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.32.07.12.07.66-.16 1.31z"/></svg>
+          Chatear por WhatsApp
+        </a>
+      </div>
+
+      <div style="margin-top:24px;display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.55);font-size:13px;font-weight:500">
+        <span style="display:inline-flex;align-items:center;gap:6px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3.5" stroke="#84CC16" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Sin costo · Sin compromiso
+        </span>
+        <span>·</span>
+        <span style="display:inline-flex;align-items:center;gap:6px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.25"/><path d="M7 4V7L9 8.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>
+          Respuesta &lt; 4h hábiles
+        </span>
+      </div>
+    </div>
+
+    <!-- Right: product composition -->
+    <div style="position:relative;height:560px">
+      <!-- IBC Tote center -->
+      <div style="position:absolute;left:22%;top:18%;width:230px;height:250px">
+        <svg viewBox="0 0 230 250" width="100%" height="100%" aria-hidden="true">
+          <defs><linearGradient id="ibcL" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1E3A8A" stop-opacity="0.35"/><stop offset="1" stop-color="#1E3A8A" stop-opacity="0.1"/></linearGradient></defs>
+          <rect x="20" y="20" width="190" height="190" rx="6" fill="url(#ibcL)" stroke="#E2E8F0" stroke-width="1.5"/>
+          <g stroke="#CBD5E1" stroke-width="2" fill="none">
+            <path d="M20 60H210M20 100H210M20 140H210M20 180H210"/>
+            <path d="M60 20V210M100 20V210M140 20V210M180 20V210"/>
+          </g>
+          <rect x="20" y="20" width="190" height="190" rx="6" fill="none" stroke="#fff" stroke-width="2"/>
+          <rect x="90" y="8" width="50" height="16" rx="2" fill="#0F172A" stroke="#fff" stroke-width="1.5"/>
+          <rect x="105" y="12" width="20" height="8" rx="1" fill="#84CC16"/>
+          <rect x="10" y="210" width="210" height="14" rx="2" fill="#0F172A"/>
+          <rect x="10" y="224" width="30" height="18" fill="#0F172A"/>
+          <rect x="190" y="224" width="30" height="18" fill="#0F172A"/>
+        </svg>
+        <div style="position:absolute;top:-10px;right:-40px;background:#fff;color:#0F172A;font-weight:700;font-size:12px;padding:4px 10px;border-radius:9999px;box-shadow:0 4px 12px rgba(0,0,0,0.2)">1,000 L</div>
+      </div>
+
+      <!-- Drum top -->
+      <div style="position:absolute;left:-4%;top:0%;width:150px;height:180px">
+        <svg viewBox="0 0 150 180" width="100%" height="100%" aria-hidden="true">
+          <ellipse cx="75" cy="18" rx="55" ry="12" fill="#fff" stroke="#0F172A" stroke-width="2"/>
+          <path d="M20 18V160C20 168 44 174 75 174C106 174 130 168 130 160V18" fill="#1E293B" stroke="#0F172A" stroke-width="2"/>
+          <ellipse cx="75" cy="160" rx="55" ry="10" fill="#0F172A"/>
+          <rect x="20" y="60" width="110" height="10" fill="#fff" opacity="0.9"/>
+          <rect x="20" y="110" width="110" height="10" fill="#fff" opacity="0.9"/>
+          <rect x="52" y="80" width="46" height="22" fill="#F97316" stroke="#fff" stroke-width="1.5" rx="2"/>
+          <path d="M75 84L69 96H81L75 84Z" fill="#fff"/>
+          <circle cx="75" cy="99" r="1.4" fill="#fff"/>
+        </svg>
+      </div>
+
+      <!-- Swipe bottle bottom-left -->
+      <div style="position:absolute;left:2%;bottom:6%;width:130px;height:180px">
+        <svg viewBox="0 0 130 180" width="100%" height="100%" aria-hidden="true">
+          <rect x="52" y="6" width="26" height="18" fill="#0F172A" rx="2"/>
+          <path d="M40 30 Q40 22 52 22 H78 Q90 22 90 30 V50 Q108 60 108 84 V162 Q108 174 96 174 H34 Q22 174 22 162 V84 Q22 60 40 50 Z" fill="#E8B434" stroke="#0F172A" stroke-width="2"/>
+          <rect x="30" y="86" width="70" height="56" rx="3" fill="#fff"/>
+          <rect x="36" y="94" width="42" height="6" rx="1" fill="#0F172A"/>
+          <rect x="36" y="104" width="58" height="4" rx="1" fill="#84CC16"/>
+          <rect x="36" y="114" width="52" height="3" fill="#CBD5E1"/>
+          <rect x="36" y="122" width="52" height="3" fill="#CBD5E1"/>
+          <rect x="36" y="130" width="30" height="3" fill="#CBD5E1"/>
+        </svg>
+      </div>
+
+      <!-- Spill kit bottom-right -->
+      <div style="position:absolute;right:-2%;bottom:2%;width:170px;height:150px">
+        <svg viewBox="0 0 170 150" width="100%" height="100%" aria-hidden="true">
+          <rect x="14" y="30" width="150" height="110" rx="6" fill="#F5C518" stroke="#0F172A" stroke-width="2"/>
+          <rect x="14" y="30" width="150" height="20" fill="#0F172A"/>
+          <rect x="70" y="20" width="30" height="14" rx="2" fill="#0F172A"/>
+          <g fill="#0F172A" font-family="Inter" font-weight="800" font-size="18">
+            <text x="85" y="90" text-anchor="middle">SPILL</text>
+            <text x="85" y="112" text-anchor="middle">KIT</text>
+          </g>
+          <rect x="24" y="120" width="26" height="14" fill="#fff" stroke="#0F172A" stroke-width="1.5"/>
+          <rect x="56" y="120" width="26" height="14" fill="#fff" stroke="#0F172A" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <!-- Floating trust tags -->
+      <div style="position:absolute;left:-6%;top:20%;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15);border-radius:9999px;padding:6px 12px;color:#fff;font-size:12px;font-weight:500">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1C6 1 3 3 3 6C3 8.5 6 11 6 11C6 11 9 8.5 9 6C9 3 6 1 6 1Z" fill="#84CC16"/></svg>
+        100% Biodegradable
+      </div>
+      <div style="position:absolute;right:-4%;top:12%;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15);border-radius:9999px;padding:6px 12px;color:#fff;font-size:12px;font-weight:500">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L2 3V6C2 8.5 4 10.5 6 11C8 10.5 10 8.5 10 6V3L6 1Z" stroke="#F97316" stroke-width="1.4"/></svg>
+        NOM-018-STPS
+      </div>
+      <div style="position:absolute;right:-2%;top:52%;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15);border-radius:9999px;padding:6px 12px;color:#fff;font-size:12px;font-weight:500">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="#fff" stroke-width="1.2"/><path d="M6 4V6L7.5 7" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Stock 24h
+      </div>
+      <div style="position:absolute;left:-4%;bottom:6%;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15);border-radius:9999px;padding:6px 12px;color:#fff;font-size:12px;font-weight:500">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2.5" y="1.5" width="7" height="9" rx="0.6" stroke="#fff" stroke-width="1.2"/><path d="M4 4H8M4 6H8M4 8H6.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+        CFDI 4.0
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE CONFIGURATOR -->
+<section id="cotizar" style="background:#F8FAFC;padding:80px 24px">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="background:#fff;border:1px solid #E2E8F0;border-radius:24px;box-shadow:0 24px 64px rgba(15,23,42,0.08),0 8px 16px rgba(15,23,42,0.04);padding:48px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:24px;border-bottom:1px solid #E2E8F0">
+        <div class="schib" style="font-size:12px;font-weight:500;color:#64748B;display:inline-flex;align-items:center;gap:8px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L2 3V7C2 10 4.5 12.5 7 13C9.5 12.5 12 10 12 7V3L7 1Z" stroke="#65A30D" stroke-width="1.4"/><path d="M4.5 7L6.3 8.5L9.5 5.5" stroke="#65A30D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Distribuidor autorizado · RFC RMA240222RH7
+        </div>
+        <div class="schib" style="font-size:12px;font-weight:500;color:#64748B;display:inline-flex;align-items:center;gap:8px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#64748B" stroke-width="1.3"/><path d="M7 4V7L9 8.5" stroke="#64748B" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Respuesta en menos de 4h hábiles
+        </div>
+      </div>
+
+      <div style="margin-top:32px">
+        <div class="schib" style="color:#F97316;font-size:11px;font-weight:600">Cotización en 60 segundos</div>
+        <h2 class="fustat" style="margin:8px 0 0;font-weight:700;font-size:32px;line-height:1.15;letter-spacing:-0.5px;color:#0F172A">{{ quoteTitle }}</h2>
+      </div>
+
+      <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <label style="display:block">
+          <span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">¿Qué necesitas cotizar?</span>
+          <select style="width:100%;height:52px;padding:0 14px;border:1px solid #CBD5E1;border-radius:12px;font-size:15px;color:#0F172A;background:#fff">
+            <option>Selecciona una categoría</option>
+            <option>Limpieza Industrial</option>
+            <option>Kit de Derrame &amp; Seguridad</option>
+            <option>Tarimas &amp; Totes</option>
+            <option>Insumos Institucionales</option>
+            <option>Mezcla / No estoy seguro</option>
+          </select>
+        </label>
+        <label style="display:block">
+          <span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Cantidad estimada / Frecuencia</span>
+          <input type="text" placeholder="Ej. 200L mensuales" style="width:100%;height:52px;padding:0 14px;border:1px solid #CBD5E1;border-radius:12px;font-size:15px;color:#0F172A">
+        </label>
+        <label style="display:block">
+          <span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Correo corporativo</span>
+          <input type="email" placeholder="compras@empresa.mx" style="width:100%;height:52px;padding:0 14px;border:1px solid #CBD5E1;border-radius:12px;font-size:15px;color:#0F172A">
+        </label>
+        <label style="display:block">
+          <span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Empresa</span>
+          <input type="text" placeholder="Razón social" style="width:100%;height:52px;padding:0 14px;border:1px solid #CBD5E1;border-radius:12px;font-size:15px;color:#0F172A">
+        </label>
+      </div>
+
+      <button style="margin-top:24px;width:100%;height:56px;background:#F97316;color:#fff;font-weight:600;font-size:16px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 12px rgba(249,115,22,0.25)">
+        Solicitar Cotización
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px">
+        <button style="display:inline-flex;align-items:center;gap:6px;background:#F1F5F9;color:#0F172A;font-size:13px;font-weight:500;padding:8px 14px;border-radius:12px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="1.5" width="8" height="11" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M5 5H9M5 7H9M5 9H7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Descargar Catálogo PDF
+        </button>
+        <button style="display:inline-flex;align-items:center;gap:6px;background:#F1F5F9;color:#0F172A;font-size:13px;font-weight:500;padding:8px 14px;border-radius:12px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L2 3V7C2 10 4.5 12.5 7 13C9.5 12.5 12 10 12 7V3L7 1Z" stroke="currentColor" stroke-width="1.3"/></svg>
+          Ver Fichas MSDS
+        </button>
+        <button style="display:inline-flex;align-items:center;gap:6px;background:#F1F5F9;color:#0F172A;font-size:13px;font-weight:500;padding:8px 14px;border-radius:12px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.6 2 2.2 6.4 2.2 11.8c0 1.7.4 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.4 0 9.8-4.4 9.8-9.8S17.4 2 12 2z"/></svg>
+          WhatsApp Ventas
+        </button>
+      </div>
+
+      <label style="margin-top:20px;display:flex;align-items:start;gap:10px;font-size:13px;color:#334155;line-height:1.5">
+        <input type="checkbox" style="margin-top:3px">
+        <span>He leído y acepto el <a href="#" style="color:#1E3A8A;text-decoration:underline">Aviso de Privacidad</a>. Autorizo el tratamiento de mis datos para fines de contacto comercial (LFPDPPP).</span>
+      </label>
+
+      <p style="margin-top:16px;text-align:center;font-size:12px;color:#64748B">Tus datos están protegidos. Nunca los compartimos con terceros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section style="background:#F8FAFC;padding:48px 24px;border-top:1px solid #E2E8F0">
+  <div style="max-width:1280px;margin:0 auto;text-align:center">
+    <div class="schib" style="font-size:12px;font-weight:500;color:#64748B">Distribuidor autorizado de</div>
+    <div style="margin-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:32px;filter:grayscale(1);opacity:0.6">
+      <span class="fustat" style="font-weight:800;font-size:22px;letter-spacing:-0.5px;color:#0F172A">Swipe</span>
+      <span class="fustat" style="font-weight:800;font-size:26px;color:#0F172A">3M</span>
+      <span class="fustat" style="font-weight:700;font-size:18px;color:#0F172A">Kimberly-Clark</span>
+      <span class="fustat" style="font-weight:800;font-size:22px;color:#0F172A">Greenco</span>
+      <span class="fustat" style="font-weight:800;font-size:22px;color:#0F172A">Truper</span>
+      <span class="fustat" style="font-weight:800;font-size:20px;color:#0F172A">Kemix Bio</span>
+      <span class="fustat" style="font-weight:800;font-size:22px;color:#0F172A">Prolimp</span>
+      <span class="fustat" style="font-weight:800;font-size:22px;color:#0F172A">Elite</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS GRID -->
+<section id="soluciones" style="background:#fff;padding:120px 24px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="max-width:720px;margin:0 auto;text-align:center">
+      <div class="schib" style="font-size:12px;font-weight:600;color:#65A30D">Soluciones integrales</div>
+      <h2 class="fustat" style="margin:12px 0 16px;font-weight:700;font-size:40px;line-height:1.15;letter-spacing:-0.8px;color:#0F172A">{{ solutionsTitle }}</h2>
+      <p style="margin:0;font-size:17px;line-height:1.55;color:#64748B">Consolida tu compra de limpieza, seguridad y logística con un proveedor certificado, con inventario disponible y respuesta en cuestión de horas.</p>
+    </div>
+
+    <div style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <!-- Card 1 -->
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;padding:32px;box-shadow:0 2px 4px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04)">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="18" y="6" width="12" height="6" rx="1" stroke="#1E293B" stroke-width="2"/><path d="M14 14 Q14 12 16 12 H32 Q34 12 34 14 V18 Q42 22 42 32 V40 Q42 44 38 44 H10 Q6 44 6 40 V32 Q6 22 14 18 Z" stroke="#1E293B" stroke-width="2"/><rect x="14" y="26" width="20" height="12" rx="2" fill="#F1F5F9" stroke="#1E293B" stroke-width="1.5"/></svg>
+          <span style="background:#F7FEE7;color:#65A30D;font-size:11px;font-weight:600;padding:5px 10px;border-radius:9999px">Biodegradable</span>
+        </div>
+        <h3 style="margin:24px 0 8px;font-size:24px;font-weight:600;color:#0F172A;letter-spacing:-0.3px">Limpieza Industrial</h3>
+        <p style="margin:0 0 20px;font-size:15px;line-height:1.55;color:#64748B">Desengrasantes, multiusos y detergentes concentrados formulados para instalaciones industriales pesadas.</p>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Swipe Magic · Greenco Green 1500</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Multiusos concentrado</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Detergentes institucionales</li>
+        </ul>
+        <a href="#" style="margin-top:20px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#0F172A">Ver soluciones <span>→</span></a>
+      </div>
+
+      <!-- Card 2 -->
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;padding:32px;box-shadow:0 2px 4px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04)">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 4L8 10V22C8 32 16 42 24 44C32 42 40 32 40 22V10L24 4Z" stroke="#1E293B" stroke-width="2"/><path d="M18 24L22 28L30 20" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="background:#FFF7ED;color:#EA580C;font-size:11px;font-weight:600;padding:5px 10px;border-radius:9999px">Respuesta rápida</span>
+        </div>
+        <h3 style="margin:24px 0 8px;font-size:24px;font-weight:600;color:#0F172A;letter-spacing:-0.3px">Seguridad &amp; Kits de Derrame</h3>
+        <p style="margin:0 0 20px;font-size:15px;line-height:1.55;color:#64748B">Kits completos para contención y limpieza de derrames de hidrocarburos y químicos. Cumplen NOM-018-STPS.</p>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Kits universales · Absorbentes</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>EPP especializado</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Contenedores HAZMAT</li>
+        </ul>
+        <a href="#" style="margin-top:20px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#0F172A">Ver soluciones <span>→</span></a>
+      </div>
+
+      <!-- Card 3 -->
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;padding:32px;box-shadow:0 2px 4px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04)">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="14" width="36" height="24" rx="2" stroke="#1E293B" stroke-width="2"/><path d="M6 22H42" stroke="#1E293B" stroke-width="2"/><rect x="14" y="26" width="10" height="8" fill="#F1F5F9" stroke="#1E293B" stroke-width="1.5"/><rect x="26" y="26" width="10" height="8" fill="#F1F5F9" stroke="#1E293B" stroke-width="1.5"/></svg>
+          <span style="background:#EFF6FF;color:#1E3A8A;font-size:11px;font-weight:600;padding:5px 10px;border-radius:9999px">Cadena de suministro</span>
+        </div>
+        <h3 style="margin:24px 0 8px;font-size:24px;font-weight:600;color:#0F172A;letter-spacing:-0.3px">Logística Industrial</h3>
+        <p style="margin:0 0 20px;font-size:15px;line-height:1.55;color:#64748B">Tarimas de madera, plástico y anti-derrame. Totes, tanques cerrados y contenedores para almacenamiento y transporte.</p>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Tarimas maciza / multicapa</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>IBC 1000L · Tambos 200L</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Supersacos</li>
+        </ul>
+        <a href="#" style="margin-top:20px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#0F172A">Ver soluciones <span>→</span></a>
+      </div>
+
+      <!-- Card 4 -->
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;padding:32px;box-shadow:0 2px 4px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04)">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="10" y="6" width="28" height="36" rx="2" stroke="#1E293B" stroke-width="2"/><path d="M16 14H32M16 20H32M16 26H26M16 32H22" stroke="#1E293B" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="background:#F7FEE7;color:#65A30D;font-size:11px;font-weight:600;padding:5px 10px;border-radius:9999px">Alto rendimiento</span>
+        </div>
+        <h3 style="margin:24px 0 8px;font-size:24px;font-weight:600;color:#0F172A;letter-spacing:-0.3px">Insumos Institucionales</h3>
+        <p style="margin:0 0 20px;font-size:15px;line-height:1.55;color:#64748B">Papel higiénico, toallas, jabones, dispensadores y consumibles para instalaciones con alto flujo de personal.</p>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Kimberly-Clark · Elite Empresas</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Dispensadores</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:#334155"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5L5.5 11L12 3.5" stroke="#65A30D" stroke-width="1.75" fill="none" stroke-linecap="round"/></svg>Aromatizantes</li>
+        </ul>
+        <a href="#" style="margin-top:20px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#0F172A">Ver soluciones <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO WHY -->
+<section style="background:#0F172A;padding:120px 24px;position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);background-size:24px 24px;pointer-events:none"></div>
+  <div style="position:relative;max-width:1280px;margin:0 auto">
+    <div style="max-width:720px">
+      <div class="schib" style="font-size:12px;font-weight:600;color:#84CC16">Por qué Rioaza</div>
+      <h2 class="fustat" style="margin:12px 0 0;font-weight:700;font-size:40px;line-height:1.15;letter-spacing:-0.8px;color:#fff">{{ whyTitle }}</h2>
+    </div>
+
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px">
+      <!-- 1: 2×1 -->
+      <div style="grid-column:span 2;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between">
+        <span style="align-self:flex-start;background:rgba(132,204,22,0.15);color:#84CC16;font-size:11px;font-weight:600;padding:5px 10px;border-radius:9999px">Eco</span>
+        <div>
+          <h3 style="margin:0 0 6px;font-size:22px;font-weight:600;color:#fff;letter-spacing:-0.3px">100% Biodegradables</h3>
+          <p style="margin:0;font-size:14px;color:#94A3B8;line-height:1.5">Portafolio completo de químicos con degradación certificada — sin sacrificar poder de limpieza industrial.</p>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div style="background:#1E293B;border:1px solid #334155;border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="7" y="3" width="18" height="26" rx="2" stroke="#84CC16" stroke-width="1.75"/><path d="M11 10H21M11 15H21M11 20H17" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div>
+          <h3 style="margin:0 0 4px;font-size:16px;font-weight:600;color:#fff">MSDS descargable</h3>
+          <p style="margin:0;font-size:13px;color:#94A3B8">Fichas de todo el catálogo.</p>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div style="background:#1E293B;border:1px solid #334155;border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="#84CC16" stroke-width="1.75"/><path d="M16 9V16L20 19" stroke="#fff" stroke-width="1.75" stroke-linecap="round"/></svg>
+        <div>
+          <div class="fustat" style="font-weight:700;font-size:28px;color:#fff;letter-spacing:-0.5px">48h</div>
+          <p style="margin:0;font-size:13px;color:#94A3B8">Entrega promedio en zona.</p>
+        </div>
+      </div>
+      <!-- 4: 1×2 map -->
+      <div style="grid-row:span 2;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <h3 style="margin:0 0 6px;font-size:16px;font-weight:600;color:#fff">Cobertura Golfo</h3>
+          <p style="margin:0;font-size:13px;color:#94A3B8">Envíos nacionales.</p>
+        </div>
+        <svg viewBox="0 0 160 200" width="100%" style="max-height:280px" aria-hidden="true">
+          <path d="M20 60 Q30 40 50 42 Q70 44 82 52 Q98 60 110 58 Q128 56 140 68 Q148 82 142 100 Q136 118 122 128 Q108 138 92 142 Q76 146 62 138 Q46 132 34 118 Q22 100 18 82 Q16 70 20 60 Z" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+          <g>
+            <circle cx="50" cy="90" r="5" fill="#F97316"/>
+            <text x="60" y="94" fill="#fff" font-size="9" font-family="Inter" font-weight="600">Cd. del Carmen</text>
+            <circle cx="70" cy="70" r="4" fill="#84CC16"/>
+            <text x="80" y="74" fill="#94A3B8" font-size="9">Coatzacoalcos</text>
+            <circle cx="88" cy="105" r="4" fill="#84CC16"/>
+            <text x="98" y="109" fill="#94A3B8" font-size="9">Villahermosa</text>
+            <circle cx="42" cy="55" r="4" fill="#84CC16"/>
+            <text x="52" y="59" fill="#94A3B8" font-size="9">Cd. Madero</text>
+          </g>
+        </svg>
+      </div>
+      <!-- 5 -->
+      <div style="background:#1E293B;border:1px solid #334155;border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="16" rx="2" stroke="#84CC16" stroke-width="1.75"/><path d="M10 14H22M10 18H16" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div>
+          <h3 style="margin:0 0 4px;font-size:16px;font-weight:600;color:#fff">CFDI 4.0</h3>
+          <p style="margin:0;font-size:13px;color:#94A3B8">Emisión inmediata.</p>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div style="background:#1E293B;border:1px solid #334155;border-radius:20px;padding:24px;display:flex;flex-direction:column;justify-content:space-between">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="8" y="14" width="16" height="12" rx="2" stroke="#84CC16" stroke-width="1.75"/><path d="M11 14V10C11 7 13 5 16 5C19 5 21 7 21 10V14" stroke="#94A3B8" stroke-width="1.75"/></svg>
+        <div>
+          <h3 style="margin:0 0 4px;font-size:16px;font-weight:600;color:#fff">Precios fijos MXN</h3>
+          <p style="margin:0;font-size:13px;color:#94A3B8">Blindados vs. tipo de cambio.</p>
+        </div>
+      </div>
+      <!-- 7: 2×1 -->
+      <div style="grid-column:span 2;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M6 22 L12 16 L18 22 L24 16 L30 22" stroke="#84CC16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="16" r="3" fill="#F97316"/><circle cx="24" cy="16" r="3" fill="#F97316"/></svg>
+        <div>
+          <h3 style="margin:0 0 6px;font-size:22px;font-weight:600;color:#fff;letter-spacing:-0.3px">Crédito a empresas</h3>
+          <p style="margin:0;font-size:14px;color:#94A3B8;line-height:1.5">Líneas de crédito a 15 / 30 / 45 días previa evaluación. Ideal para contratos anuales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS TABS -->
+<section id="sectores" style="background:#fff;padding:120px 24px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="max-width:720px">
+      <div class="schib" style="font-size:12px;font-weight:600;color:#65A30D">Sectores que atendemos</div>
+      <h2 class="fustat" style="margin:12px 0 0;font-weight:700;font-size:40px;line-height:1.15;letter-spacing:-0.8px;color:#0F172A">Especialistas en industrias exigentes del sureste.</h2>
+    </div>
+
+    <div style="margin-top:40px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid #E2E8F0">
+      <button style="padding:14px 20px;font-size:15px;font-weight:600;color:#0F172A;border-bottom:2px solid #F97316">Petrolero</button>
+      <button style="padding:14px 20px;font-size:15px;font-weight:500;color:#64748B">Marítimo</button>
+      <button style="padding:14px 20px;font-size:15px;font-weight:500;color:#64748B">Portuario</button>
+      <button style="padding:14px 20px;font-size:15px;font-weight:500;color:#64748B">Industrial</button>
+    </div>
+
+    <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+      <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#1E293B,#0F172A);border-radius:20px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.03) 0,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 24px)"></div>
+        <div style="position:absolute;bottom:24px;left:24px;color:#fff">
+          <div class="schib" style="font-size:11px;font-weight:600;color:#84CC16">Sector</div>
+          <div class="fustat" style="font-weight:700;font-size:28px;letter-spacing:-0.5px">Petrolero</div>
+          <div style="font-family:monospace;font-size:11px;color:#94A3B8;margin-top:4px">[ IMAGE · plataforma / instalación petrolera ]</div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin:0 0 12px;font-size:22px;font-weight:600;color:#0F172A;letter-spacing:-0.3px">Retos operativos que resolvemos</h3>
+        <ul style="margin:0 0 24px;padding:0;list-style:none;display:grid;gap:10px">
+          <li style="display:flex;gap:10px;font-size:15px;color:#334155;line-height:1.55"><span style="color:#84CC16;flex-shrink:0">◆</span>Kits de derrame certificados NOM-018-STPS en sitio, con recarga garantizada.</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#334155;line-height:1.55"><span style="color:#84CC16;flex-shrink:0">◆</span>Desengrasantes biodegradables aprobados para descarga controlada.</li>
+          <li style="display:flex;gap:10px;font-size:15px;color:#334155;line-height:1.55"><span style="color:#84CC16;flex-shrink:0">◆</span>Facturación CFDI 4.0 con complementos para contratistas de PEMEX.</li>
+        </ul>
+        <div style="padding:20px;background:#F8FAFC;border-left:3px solid #84CC16;border-radius:8px">
+          <p style="margin:0;font-size:14px;color:#334155;line-height:1.55;font-style:italic">"RIOAZA cumplió el pedido de 40 kits de derrame en 36 horas cuando otros distribuidores nos pedían 3 semanas."</p>
+          <div style="margin-top:8px;font-size:12px;color:#64748B;font-weight:500">— Coordinador SSPA, contratista Sonda de Campeche</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG PREVIEW -->
+<section id="catalogo" style="background:#F8FAFC;padding:120px 24px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap">
+      <div>
+        <div class="schib" style="font-size:12px;font-weight:600;color:#65A30D">Catálogo</div>
+        <h2 class="fustat" style="margin:12px 0 0;font-weight:700;font-size:40px;line-height:1.15;letter-spacing:-0.8px;color:#0F172A">Productos más solicitados</h2>
+      </div>
+      <a href="#" style="display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#0F172A">Ver catálogo completo →</a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <!-- product cards -->
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;box-shadow:0 2px 4px rgba(15,23,42,0.06)">
+        <div style="aspect-ratio:1;background:#F1F5F9;position:relative;display:flex;align-items:center;justify-content:center">
+          <span style="position:absolute;top:12px;left:12px;background:#fff;color:#0F172A;font-size:10px;font-weight:600;padding:4px 8px;border-radius:9999px">Limpieza</span>
+          <span style="position:absolute;top:12px;right:12px;background:#84CC16;color:#0F172A;font-size:10px;font-weight:700;padding:4px 8px;border-radius:9999px">Bio</span>
+          <svg viewBox="0 0 100 140" width="60%" aria-hidden="true"><rect x="38" y="4" width="24" height="14" fill="#0F172A" rx="2"/><path d="M28 24 Q28 18 38 18 H62 Q72 18 72 24 V44 Q88 52 88 72 V128 Q88 136 78 136 H22 Q12 136 12 128 V72 Q12 52 28 44 Z" fill="#E8B434" stroke="#0F172A" stroke-width="2"/><rect x="20" y="76" width="60" height="46" rx="2" fill="#fff"/><rect x="26" y="84" width="34" height="5" fill="#0F172A"/><rect x="26" y="92" width="48" height="3" fill="#84CC16"/></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-size:16px;font-weight:600;color:#0F172A">Swipe Magic 5L</div>
+          <div style="font-size:13px;color:#64748B;margin-top:2px">Swipe</div>
+          <div style="margin-top:14px;display:flex;gap:6px">
+            <a href="#cotizar" style="flex:1;text-align:center;padding:8px 10px;border:1px solid #F97316;color:#F97316;font-size:13px;font-weight:600;border-radius:10px">Cotizar</a>
+            <a href="#" style="padding:8px 10px;color:#334155;font-size:13px;font-weight:500;border-radius:10px">MSDS</a>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;box-shadow:0 2px 4px rgba(15,23,42,0.06)">
+        <div style="aspect-ratio:1;background:#F1F5F9;position:relative;display:flex;align-items:center;justify-content:center">
+          <span style="position:absolute;top:12px;left:12px;background:#fff;color:#0F172A;font-size:10px;font-weight:600;padding:4px 8px;border-radius:9999px">Seguridad</span>
+          <svg viewBox="0 0 120 100" width="70%" aria-hidden="true"><rect x="6" y="20" width="108" height="76" rx="4" fill="#F5C518" stroke="#0F172A" stroke-width="2"/><rect x="6" y="20" width="108" height="14" fill="#0F172A"/><text x="60" y="60" text-anchor="middle" font-family="Inter" font-weight="800" font-size="14" fill="#0F172A">SPILL</text><text x="60" y="76" text-anchor="middle" font-family="Inter" font-weight="800" font-size="14" fill="#0F172A">KIT</text></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-size:16px;font-weight:600;color:#0F172A">Kit Derrame Universal 95L</div>
+          <div style="font-size:13px;color:#64748B;margin-top:2px">MR Seguridad</div>
+          <div style="margin-top:14px;display:flex;gap:6px">
+            <a href="#cotizar" style="flex:1;text-align:center;padding:8px 10px;border:1px solid #F97316;color:#F97316;font-size:13px;font-weight:600;border-radius:10px">Cotizar</a>
+            <a href="#" style="padding:8px 10px;color:#334155;font-size:13px;font-weight:500;border-radius:10px">MSDS</a>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;box-shadow:0 2px 4px rgba(15,23,42,0.06)">
+        <div style="aspect-ratio:1;background:#F1F5F9;position:relative;display:flex;align-items:center;justify-content:center">
+          <span style="position:absolute;top:12px;left:12px;background:#fff;color:#0F172A;font-size:10px;font-weight:600;padding:4px 8px;border-radius:9999px">Logística</span>
+          <svg viewBox="0 0 100 100" width="60%" aria-hidden="true"><rect x="10" y="10" width="80" height="80" rx="4" fill="#E2E8F0" stroke="#0F172A" stroke-width="2"/><g stroke="#0F172A" stroke-width="1.5"><path d="M10 30H90M10 50H90M10 70H90M30 10V90M50 10V90M70 10V90"/></g></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-size:16px;font-weight:600;color:#0F172A">IBC Tote 1000L</div>
+          <div style="font-size:13px;color:#64748B;margin-top:2px">Greenco</div>
+          <div style="margin-top:14px;display:flex;gap:6px">
+            <a href="#cotizar" style="flex:1;text-align:center;padding:8px 10px;border:1px solid #F97316;color:#F97316;font-size:13px;font-weight:600;border-radius:10px">Cotizar</a>
+            <a href="#" style="padding:8px 10px;color:#334155;font-size:13px;font-weight:500;border-radius:10px">MSDS</a>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;box-shadow:0 2px 4px rgba(15,23,42,0.06)">
+        <div style="aspect-ratio:1;background:#F1F5F9;position:relative;display:flex;align-items:center;justify-content:center">
+          <span style="position:absolute;top:12px;left:12px;background:#fff;color:#0F172A;font-size:10px;font-weight:600;padding:4px 8px;border-radius:9999px">Institucional</span>
+          <span style="position:absolute;top:12px;right:12px;background:#84CC16;color:#0F172A;font-size:10px;font-weight:700;padding:4px 8px;border-radius:9999px">Bio</span>
+          <svg viewBox="0 0 100 100" width="55%" aria-hidden="true"><rect x="26" y="16" width="48" height="76" rx="4" fill="#fff" stroke="#0F172A" stroke-width="2"/><rect x="32" y="24" width="36" height="4" fill="#0F172A"/><rect x="32" y="34" width="36" height="3" fill="#CBD5E1"/><rect x="32" y="42" width="24" height="3" fill="#CBD5E1"/></svg>
+        </div>
+        <div style="padding:20px">
+          <div style="font-size:16px;font-weight:600;color:#0F172A">Papel Higiénico Elite JR</div>
+          <div style="font-size:13px;color:#64748B;margin-top:2px">Kimberly-Clark</div>
+          <div style="margin-top:14px;display:flex;gap:6px">
+            <a href="#cotizar" style="flex:1;text-align:center;padding:8px 10px;border:1px solid #F97316;color:#F97316;font-size:13px;font-weight:600;border-radius:10px">Cotizar</a>
+            <a href="#" style="padding:8px 10px;color:#334155;font-size:13px;font-weight:500;border-radius:10px">MSDS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="recursos" style="background:#fff;padding:120px 24px">
+  <div style="max-width:1080px;margin:0 auto">
+    <div class="schib" style="font-size:12px;font-weight:600;color:#65A30D">FAQ técnico</div>
+    <h2 class="fustat" style="margin:12px 0 48px;font-weight:700;font-size:40px;line-height:1.15;letter-spacing:-0.8px;color:#0F172A">Preguntas del área de compras.</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 32px">
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">¿Emiten CFDI 4.0?<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">Sí, con todos los complementos requeridos: comercio exterior, carta porte, INE, y facturación global.</p></details>
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">Tiempo de entrega en plataformas<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">48h promedio en zona Sonda de Campeche. Urgencias en menos de 24h con recargo logístico.</p></details>
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">MSDS en español<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">Todos los productos con ficha en español, formato NOM-018-STPS y bilingüe bajo solicitud.</p></details>
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">Condiciones de crédito<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">15, 30 y 45 días para nuevos clientes previa evaluación de crédito con documentación estándar.</p></details>
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">Cumplimiento PROFEPA<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">Productos biodegradables con certificación de degradación &gt;90% en 28 días.</p></details>
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">Facturas globales anuales<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">Sí, para contratos con facturación consolidada mensual o trimestral.</p></details>
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">Capacitación en kits<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">Ofrecemos capacitación presencial y remota para uso de kits de derrame en sitio.</p></details>
+      <details style="border-bottom:1px solid #E2E8F0;padding:16px 0"><summary style="cursor:pointer;font-size:16px;font-weight:600;color:#0F172A;list-style:none;display:flex;justify-content:space-between;align-items:center">Alta en CompraNet<span style="color:#64748B">+</span></summary><p style="margin:12px 0 0;font-size:14px;color:#64748B;line-height:1.6">Registrados en CompraNet y padrones de proveedores de PEMEX y CFE.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL FORM -->
+<section id="contacto" style="background:#0F172A;padding:96px 24px;position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);background-size:24px 24px;pointer-events:none"></div>
+  <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:start">
+    <div style="background:#fff;border-radius:24px;padding:48px;box-shadow:0 24px 64px rgba(0,0,0,0.32)">
+      <h2 class="fustat" style="margin:0 0 8px;font-weight:700;font-size:32px;letter-spacing:-0.5px;color:#0F172A">Solicita tu cotización</h2>
+      <p style="margin:0 0 28px;font-size:16px;color:#64748B">Respuesta garantizada en menos de 4 horas hábiles.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <label style="display:block"><span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Nombre completo *</span><input type="text" style="width:100%;height:48px;padding:0 14px;border:1px solid #CBD5E1;border-radius:10px;font-size:15px"></label>
+        <label style="display:block"><span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Empresa *</span><input type="text" style="width:100%;height:48px;padding:0 14px;border:1px solid #CBD5E1;border-radius:10px;font-size:15px"></label>
+        <label style="display:block"><span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Correo corporativo *</span><input type="email" style="width:100%;height:48px;padding:0 14px;border:1px solid #CBD5E1;border-radius:10px;font-size:15px"></label>
+        <label style="display:block"><span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Teléfono / WhatsApp *</span><input type="tel" style="width:100%;height:48px;padding:0 14px;border:1px solid #CBD5E1;border-radius:10px;font-size:15px"></label>
+        <label style="display:block"><span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Sector *</span><select style="width:100%;height:48px;padding:0 14px;border:1px solid #CBD5E1;border-radius:10px;font-size:15px;background:#fff"><option>Petrolero</option><option>Marítimo</option><option>Portuario</option><option>Industrial</option><option>Otro</option></select></label>
+        <label style="display:block"><span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">Zona de entrega *</span><select style="width:100%;height:48px;padding:0 14px;border:1px solid #CBD5E1;border-radius:10px;font-size:15px;background:#fff"><option>Campeche</option><option>Tabasco</option><option>Veracruz</option><option>Tamaulipas</option><option>Otro</option></select></label>
+      </div>
+
+      <label style="display:block;margin-top:16px"><span style="display:block;font-size:13px;font-weight:500;color:#334155;margin-bottom:6px">¿Qué necesitas cotizar? *</span><textarea rows="3" style="width:100%;padding:12px 14px;border:1px solid #CBD5E1;border-radius:10px;font-size:15px;resize:vertical"></textarea></label>
+
+      <label style="margin-top:16px;display:flex;align-items:start;gap:10px;font-size:13px;color:#334155;line-height:1.5">
+        <input type="checkbox" style="margin-top:3px">
+        <span>He leído y acepto el <a href="#" style="color:#1E3A8A;text-decoration:underline">Aviso de Privacidad</a>. Autorizo el tratamiento de mis datos (LFPDPPP).</span>
+      </label>
+
+      <button style="margin-top:20px;width:100%;height:56px;background:#F97316;color:#fff;font-weight:600;font-size:16px;border-radius:12px;box-shadow:0 4px 12px rgba(249,115,22,0.3)">Enviar solicitud</button>
+    </div>
+
+    <div style="color:#fff;padding-top:12px">
+      <div class="schib" style="font-size:12px;font-weight:600;color:#84CC16">Contacto directo</div>
+      <h3 class="fustat" style="margin:12px 0 20px;font-weight:700;font-size:28px;letter-spacing:-0.4px">Ciudad del Carmen, Campeche</h3>
+      <div style="font-size:14px;color:#94A3B8;line-height:1.7">
+        <div>Rioaza Matas S.A. de C.V.</div>
+        <div>RFC: RMA240222RH7</div>
+        <div>Av. Industrial 240, Col. Aviación</div>
+        <div>Cd. del Carmen, Campeche, C.P. 24140</div>
+      </div>
+
+      <div style="margin-top:28px;display:grid;gap:16px">
+        <div style="padding:16px;background:#1E293B;border:1px solid #334155;border-radius:14px">
+          <div style="font-size:14px;font-weight:600;color:#fff">Ing. Ana Ruiz</div>
+          <div style="font-size:12px;color:#94A3B8">Gerente Comercial</div>
+          <div style="margin-top:6px;font-size:13px;color:#CBD5E1">+52 938 100 0001 · ana@rioaza.mx</div>
+        </div>
+        <div style="padding:16px;background:#1E293B;border:1px solid #334155;border-radius:14px">
+          <div style="font-size:14px;font-weight:600;color:#fff">Lic. Jorge Mata</div>
+          <div style="font-size:12px;color:#94A3B8">Cuentas Petroleras</div>
+          <div style="margin-top:6px;font-size:13px;color:#CBD5E1">+52 938 100 0002 · jorge@rioaza.mx</div>
+        </div>
+      </div>
+
+      <a href="#" style="margin-top:20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;background:#16A34A;color:#fff;font-weight:600;font-size:15px;border-radius:12px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.6 2 2.2 6.4 2.2 11.8c0 1.7.4 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.4 0 9.8-4.4 9.8-9.8S17.4 2 12 2z"/></svg>
+        WhatsApp Business
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#020617;color:#94A3B8;padding:80px 24px 32px">
+  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px">
+    <div>
+      <img src="assets/rioaza-mascot.png" alt="RIOAZA Multiservicios" style="width:96px;height:auto;margin-bottom:16px;display:block;border-radius:8px">
+      <div style="display:flex;align-items:baseline;gap:6px">
+        <span class="fustat" style="font-weight:800;font-size:22px;letter-spacing:-0.44px;color:#fff">RIOAZA</span>
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#84CC16;transform:translateY(-2px)"></span>
+      </div>
+      <p style="margin:12px 0 20px;font-size:14px;line-height:1.55;max-width:280px">Estándar industrial. Impacto ambiental cero. Distribuidor B2B mexicano de insumos para la industria pesada del Golfo.</p>
+      <div style="display:flex;gap:10px">
+        <a href="#" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #334155;border-radius:8px;color:#94A3B8"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5 0h-11A2.5 2.5 0 000 2.5v11A2.5 2.5 0 002.5 16h11a2.5 2.5 0 002.5-2.5v-11A2.5 2.5 0 0013.5 0zM4.8 13H2.5V6h2.3v7zM3.6 5a1.3 1.3 0 110-2.6 1.3 1.3 0 010 2.6zM13.5 13h-2.3V9.6c0-.8 0-1.9-1.2-1.9s-1.4 1-1.4 1.9V13H6.4V6h2.2v.9h.1c.3-.6 1-1.1 2.1-1.1 2.2 0 2.6 1.5 2.6 3.4V13z"/></svg></a>
+        <a href="#" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #334155;border-radius:8px;color:#94A3B8"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8a8 8 0 10-9.25 7.9v-5.6H4.7V8h2.05V6.2c0-2.03 1.2-3.15 3.05-3.15.88 0 1.8.16 1.8.16v1.98h-1.02c-1 0-1.32.63-1.32 1.27V8h2.24l-.36 2.3H9.25v5.6A8 8 0 0016 8z"/></svg></a>
+        <a href="#" style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #334155;border-radius:8px;color:#94A3B8"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2" width="12" height="12" rx="3"/><circle cx="8" cy="8" r="3"/><circle cx="12" cy="4" r="0.6" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div style="color:#fff;font-size:14px;font-weight:600;margin-bottom:16px">Soluciones</div>
+      <div style="display:grid;gap:10px;font-size:14px">
+        <a href="#" style="color:#94A3B8">Limpieza Industrial</a>
+        <a href="#" style="color:#94A3B8">Kits de Derrame</a>
+        <a href="#" style="color:#94A3B8">Logística &amp; Tarimas</a>
+        <a href="#" style="color:#94A3B8">Institucional</a>
+      </div>
+    </div>
+    <div>
+      <div style="color:#fff;font-size:14px;font-weight:600;margin-bottom:16px">Empresa</div>
+      <div style="display:grid;gap:10px;font-size:14px">
+        <a href="#" style="color:#94A3B8">Nosotros</a>
+        <a href="#" style="color:#94A3B8">Sectores</a>
+        <a href="#" style="color:#94A3B8">Recursos</a>
+        <a href="#" style="color:#94A3B8">Blog</a>
+      </div>
+    </div>
+    <div>
+      <div style="color:#fff;font-size:14px;font-weight:600;margin-bottom:16px">Legal</div>
+      <div style="display:grid;gap:10px;font-size:14px">
+        <a href="#" style="color:#94A3B8">Aviso de Privacidad</a>
+        <a href="#" style="color:#94A3B8">Términos</a>
+        <a href="#" style="color:#94A3B8">RFC RMA240222RH7</a>
+        <a href="#" style="color:#94A3B8">Acta Constitutiva</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:48px auto 0;padding-top:24px;border-top:1px solid #1E293B;display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:12px">
+    <div>© <span>{{ year }}</span> Rioaza Matas S.A. de C.V. — Todos los derechos reservados.</div>
+    <div>WCAG 2.2 AA · LFPDPPP compliant</div>
+    <a href="#" style="color:#94A3B8">↑ Volver arriba</a>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;heroBadge&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;100% Biodegradable · NOM-018-STPS&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroL1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Insumos industriales.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroL2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Estándar petrolero.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroL3a&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Impacto ambiental&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroL3b&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;cero.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroSubtitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Distribuidor de productos de limpieza, kits de derrame y logística para la industria pesada del Golfo de México. Precios fijos, stock 24h, facturación CFDI 4.0.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;ctaPrimary&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Solicitar Cotización&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;CTA&quot;},&quot;quoteTitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Cuéntanos qué necesitas y te enviamos precio en horas.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Secciones&quot;},&quot;solutionsTitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Todo lo que tu operación necesita, un solo proveedor&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Secciones&quot;},&quot;whyTitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Seis razones por las que la industria del Golfo nos elige&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Secciones&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      heroBadge: this.props.heroBadge ?? '100% Biodegradable · NOM-018-STPS',
+      heroL1: this.props.heroL1 ?? 'Insumos industriales.',
+      heroL2: this.props.heroL2 ?? 'Estándar petrolero.',
+      heroL3a: this.props.heroL3a ?? 'Impacto ambiental',
+      heroL3b: this.props.heroL3b ?? 'cero.',
+      heroSubtitle: this.props.heroSubtitle ?? 'Distribuidor B2B de productos de limpieza, kits de derrame y logística para la industria pesada del Golfo de México. Precios fijos, stock 24h, facturación CFDI 4.0.',
+      ctaPrimary: this.props.ctaPrimary ?? 'Solicitar Cotización',
+      quoteTitle: this.props.quoteTitle ?? 'Cuéntanos qué necesitas y te enviamos precio en horas.',
+      solutionsTitle: this.props.solutionsTitle ?? 'Todo lo que tu operación necesita, un solo proveedor',
+      whyTitle: this.props.whyTitle ?? 'Seis razones por las que la industria del Golfo nos elige',
+      year: new Date().getFullYear(),
+    };
+  }
+}
+</script>
+</body>
+</html>
