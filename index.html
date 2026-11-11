@@ -20,6 +20,79 @@
 
   <style>
     /* ==========================================================================
+   CSS: PLACEHOLDER ESTILIZADO PARA LA IMAGEN DEL HERO
+   ========================================================================== */
+
+/* 1. Contenedor principal de la columna derecha */
+.hero-media-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. Animación suave de pulso para indicar espacio en espera */
+@keyframes pulsePlaceholder {
+  0%, 100% {
+    opacity: 1;
+    border-color: rgba(148, 163, 184, 0.35);
+  }
+  50% {
+    opacity: 0.85;
+    border-color: rgba(132, 204, 22, 0.5); /* Destello verde sutil de RIOAZA */
+  }
+}
+
+/* 3. Estilo del recuadro Placeholder */
+.hero-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: radial-gradient(
+    circle at center,
+    rgba(30, 41, 59, 0.75) 0%,
+    rgba(15, 23, 42, 0.95) 100%
+  );
+  border: 2px dashed rgba(148, 163, 184, 0.35);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  animation: pulsePlaceholder 4s ease-in-out infinite;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-image-placeholder:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-brand-green);
+}
+
+.hero-image-placeholder svg {
+  color: var(--color-brand-green);
+  opacity: 0.9;
+}
+
+/* 4. Estilo preparado para cuando vincules la imagen final (<img>) */
+.hero-main-img {
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.hero-main-img:hover {
+  transform: translateY(-4px);
+}
+    /* ==========================================================================
        1. VARIABLES, RESET Y TIPOGRAFÍA
        ========================================================================== */
     :root {
@@ -295,7 +368,7 @@
       padding: 20px;
     }
 
-    /* ==========================================================================
+   /* ==========================================================================
        7. MEDIA QUERIES (RESPONSIVE)
        ========================================================================== */
     @media (max-width: 1024px) {
@@ -312,7 +385,10 @@
       .nav-links-desktop, .nav-cta-wrapper { display: none; }
       .hamburger-btn { display: inline-flex; }
       .hero-title { font-size: 38px; letter-spacing: -1.2px; line-height: 1.1; }
-      .hero-vector-art { display: none; }
+      
+      /* Oculta el contenedor del placeholder/imagen en teléfonos móviles */
+      .hero-media-wrapper { display: none; }
+      
       .solutions-grid { grid-template-columns: 1fr; }
       .catalog-grid { grid-template-columns: 1fr; }
       .form-grid-2 { grid-template-columns: 1fr; }
