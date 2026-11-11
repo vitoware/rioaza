@@ -3,416 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RIOAZA Multiservicios | Insumos Industriales</title>
+  <title>RIOAZA Multiservicios | Suministro Industrial Especializado</title>
 
-  <!-- Dependencias únicas del cliente (Carga no bloqueante) -->
+  <!-- Fuentes Corporativas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Hoja de Estilos Desacoplada -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- Dependencias de Seguridad y Despacho -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
-<helmet>
-  <!-- Tipografías optimizadas con display=swap -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600&display=swap" rel="stylesheet">
 
-  <style>
-    /* ==========================================================================
-   CSS: PLACEHOLDER ESTILIZADO PARA LA IMAGEN DEL HERO
-   ========================================================================== */
-
-/* 1. Contenedor principal de la columna derecha */
-.hero-media-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 2. Animación suave de pulso para indicar espacio en espera */
-@keyframes pulsePlaceholder {
-  0%, 100% {
-    opacity: 1;
-    border-color: rgba(148, 163, 184, 0.35);
-  }
-  50% {
-    opacity: 0.85;
-    border-color: rgba(132, 204, 22, 0.5); /* Destello verde sutil de RIOAZA */
-  }
-}
-
-/* 3. Estilo del recuadro Placeholder */
-.hero-image-placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background: radial-gradient(
-    circle at center,
-    rgba(30, 41, 59, 0.75) 0%,
-    rgba(15, 23, 42, 0.95) 100%
-  );
-  border: 2px dashed rgba(148, 163, 184, 0.35);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 32px 24px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  animation: pulsePlaceholder 4s ease-in-out infinite;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.hero-image-placeholder:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-brand-green);
-}
-
-.hero-image-placeholder svg {
-  color: var(--color-brand-green);
-  opacity: 0.9;
-}
-
-/* 4. Estilo preparado para cuando vincules la imagen final (<img>) */
-.hero-main-img {
-  width: 100%;
-  height: auto;
-  max-height: 460px;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
-  transition: transform 0.3s ease;
-}
-
-.hero-main-img:hover {
-  transform: translateY(-4px);
-}
-    /* ==========================================================================
-       1. VARIABLES, RESET Y TIPOGRAFÍA
-       ========================================================================== */
-    :root {
-      --color-primary: #0F172A;
-      --color-accent: #F97316;
-      --color-brand-green: #84CC16;
-      --color-muted: #64748B;
-      --color-border: #E2E8F0;
-      --color-bg-light: #F8FAFC;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      color: var(--color-primary);
-      background: #ffffff;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    a { color: #1E3A8A; text-decoration: none; }
-    a:hover { color: var(--color-primary); }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    input, select, textarea { font-family: inherit; outline: none; }
-    .fustat { font-family: 'Fustat', 'Inter', sans-serif; }
-    .schib { font-family: 'Schibsted Grotesk', 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.03em; }
-
-    /* ==========================================================================
-       2. CONTENEDORES Y REGLAS GLOBALES
-       ========================================================================== */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .section-py {
-      padding: 96px 0;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--color-accent);
-      color: #fff !important;
-      font-weight: 600;
-      font-size: 15px;
-      padding: 12px 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
-      transition: opacity 0.2s ease;
-    }
-    .btn-primary:hover { opacity: 0.95; }
-    .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; }
-
-    /* ==========================================================================
-       3. NAVEGACIÓN RESPONSIVA
-       ========================================================================== */
-    .nav-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--color-border);
-    }
-    .nav-container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 16px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .nav-links-desktop {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-    .nav-link-item {
-      font-size: 15px;
-      font-weight: 500;
-      color: #334155;
-    }
-    .hamburger-btn {
-      display: none;
-      padding: 8px;
-      color: var(--color-primary);
-    }
-    .mobile-menu-drawer {
-      display: none;
-      flex-direction: column;
-      gap: 16px;
-      padding: 20px 32px;
-      background: #ffffff;
-      border-top: 1px solid var(--color-border);
-    }
-    .mobile-menu-drawer.is-open { display: flex; }
-
-    /* ==========================================================================
-       4. HERO SECTION
-       ========================================================================== */
-    .hero-section {
-      position: relative;
-      background: var(--color-primary);
-      overflow: hidden;
-    }
-    .hero-container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 120px 32px 100px;
-      display: grid;
-      grid-template-columns: 7fr 5fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .hero-title {
-      margin: 28px 0 0;
-      font-weight: 800;
-      font-size: 72px;
-      line-height: 1;
-      letter-spacing: -2.5px;
-      color: #fff;
-    }
-    .hero-vector-art {
-      position: relative;
-      height: 480px;
-      width: 100%;
-    }
-
-    /* ==========================================================================
-       5. FORMULARIOS, TURNSTILE Y FEEDBACK
-       ========================================================================== */
-    .form-card {
-      background: #ffffff;
-      border: 1px solid var(--color-border);
-      border-radius: 24px;
-      box-shadow: 0 24px 64px rgba(15,23,42,0.08);
-      padding: 40px;
-    }
-    .form-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .form-label {
-      display: block;
-    }
-    .form-label span {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: #334155;
-      margin-bottom: 6px;
-    }
-    .form-input {
-      width: 100%;
-      height: 48px;
-      padding: 0 14px;
-      border: 1px solid #CBD5E1;
-      border-radius: 10px;
-      font-size: 15px;
-      color: var(--color-primary);
-      background: #fff;
-      transition: border-color 0.2s;
-    }
-    .form-input:focus {
-      border-color: var(--color-accent);
-    }
-    .turnstile-wrapper {
-      min-height: 65px;
-      margin: 16px 0 8px;
-    }
-    
-    /* Banners visuales de confirmación */
-    .form-feedback {
-      display: none;
-      margin-top: 16px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      font-size: 14px;
-      line-height: 1.5;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-    .form-feedback.is-success {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background-color: #F0FDF4;
-      border: 1px solid #BBF7D0;
-      color: #166534;
-    }
-    .form-feedback.is-warning {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background-color: #FFF7ED;
-      border: 1px solid #FED7AA;
-      color: #9A3412;
-    }
-    .form-feedback.is-error {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background-color: #FEF2F2;
-      border: 1px solid #FECACA;
-      color: #991B1B;
-    }
-    .form-feedback svg {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-    }
-
-    /* ==========================================================================
-       6. SECCIONES: SOLUCIONES, CATÁLOGO Y COBERTURA
-       ========================================================================== */
-    .solutions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 56px;
-    }
-    .card-solution {
-      background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 2px 4px rgba(15,23,42,0.06);
-    }
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 48px;
-    }
-    .card-product {
-      background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(15,23,42,0.06);
-    }
-    .coverage-card {
-      background: #1E293B;
-      border: 1px solid #334155;
-      border-radius: 24px;
-      padding: 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      margin-top: 40px;
-    }
-    .coverage-placeholder {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: #0F172A;
-      border: 2px dashed #475569;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #94A3B8;
-      gap: 12px;
-      text-align: center;
-      padding: 20px;
-    }
-
-   /* ==========================================================================
-       7. MEDIA QUERIES (RESPONSIVE)
-       ========================================================================== */
-    @media (max-width: 1024px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        padding: 80px 24px 60px;
-      }
-      .hero-title { font-size: 54px; }
-      .catalog-grid { grid-template-columns: repeat(2, 1fr); }
-      .coverage-card { grid-template-columns: 1fr; padding: 32px; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links-desktop, .nav-cta-wrapper { display: none; }
-      .hamburger-btn { display: inline-flex; }
-      .hero-title { font-size: 38px; letter-spacing: -1.2px; line-height: 1.1; }
-      
-      /* Oculta el contenedor del placeholder/imagen en teléfonos móviles */
-      .hero-media-wrapper { display: none; }
-      
-      .solutions-grid { grid-template-columns: 1fr; }
-      .catalog-grid { grid-template-columns: 1fr; }
-      .form-grid-2 { grid-template-columns: 1fr; }
-      .section-py { padding: 60px 0; }
-    }
-  </style>
-</helmet>
-
-<div style="width:100%;overflow-x:hidden;background:#fff">
+<div style="width:100%;overflow-x:hidden;">
 
   <!-- ================= NAVEGACIÓN ================= -->
   <nav class="nav-header">
     <div class="nav-container">
-      <a href="#" style="display:flex;align-items:baseline;gap:6px">
-        <span class="fustat" style="font-weight:800;font-size:24px;letter-spacing:-0.48px;color:var(--color-primary);line-height:1">RIOAZA</span>
-        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--color-brand-green);transform:translateY(-2px)"></span>
-        <span class="schib" style="margin-left:8px;font-size:9px;font-weight:500;color:var(--color-muted)">Multiservicios</span>
+      <a href="#" class="nav-brand">
+        <!-- Integración del Logotipo -->
+        <img src="assets/rioaza-mascot.png" alt="Logotipo RIOAZA Multiservicios" class="nav-logo-img">
+        <div>
+          <div class="fustat nav-brand-title">RIOAZA</div>
+          <div class="schib nav-brand-sub">MULTISERVICIOS</div>
+        </div>
       </a>
 
       <div class="nav-links-desktop">
         <a href="#soluciones" class="nav-link-item">Soluciones</a>
-        <a href="#catalogo" class="nav-link-item">Catálogo</a>
-        <a href="#sectores" class="nav-link-item">Sectores</a>
-        <a href="#cobertura" class="nav-link-item">Cobertura</a>
+        <a href="#lineas-suministro" class="nav-link-item">Líneas de Suministro</a>
+        <a href="#presencia" class="nav-link-item">Base de Suministro</a>
         <a href="#contacto" class="nav-link-item">Contacto</a>
       </div>
 
@@ -422,17 +48,16 @@
         </a>
       </div>
 
-      <button class="hamburger-btn" id="menuToggleBtn" aria-label="Abrir menú">
+      <button class="hamburger-btn" id="menuToggleBtn" aria-label="Abrir menú de navegación">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
 
-    <!-- Menú móvil / tablet -->
+    <!-- Menú desplegable para móviles -->
     <div class="mobile-menu-drawer" id="mobileDrawer">
       <a href="#soluciones" class="nav-link-item">Soluciones</a>
-      <a href="#catalogo" class="nav-link-item">Catálogo</a>
-      <a href="#sectores" class="nav-link-item">Sectores</a>
-      <a href="#cobertura" class="nav-link-item">Cobertura</a>
+      <a href="#lineas-suministro" class="nav-link-item">Líneas de Suministro</a>
+      <a href="#presencia" class="nav-link-item">Base de Suministro</a>
       <a href="#contacto" class="nav-link-item">Contacto</a>
       <a href="#cotizar" class="btn-primary" style="text-align:center">Solicitar Cotización</a>
     </div>
@@ -440,132 +65,114 @@
 
   <!-- ================= HERO SECTION ================= -->
   <section class="hero-section">
-    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(900px circle at 85% 90%, rgba(101,163,13,0.18), transparent 60%), radial-gradient(700px circle at 10% 15%, rgba(30,58,138,0.35), transparent 65%);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(800px circle at 85% 90%, rgba(132,204,22,0.12), transparent 60%);pointer-events:none"></div>
 
     <div class="hero-container">
       <div>
-        <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:9999px;padding:6px 14px">
-          <span class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Distribuidor B2B</span>
-          <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.9)">Sureste &amp; Golfo de México</span>
+        <div class="hero-badge-location">
+          <span>◆</span>
+          <span>Ciudad del Carmen, Campeche · Suministro Regional</span>
         </div>
 
         <h1 class="fustat hero-title">
-          {{ heroL1 }}<br>
-          {{ heroL2 }}<br>
-          {{ heroL3a }} <span style="color:var(--color-brand-green)">{{ heroL3b }}</span>
+          Insumos industriales.<br>
+          Estándar petrolero.<br>
+          Impacto ambiental <span>cero.</span>
         </h1>
 
-        <p style="margin:24px 0 0;max-width:540px;font-size:18px;line-height:1.55;color:rgba(255,255,255,0.72)">{{ heroSubtitle }}</p>
+        <p class="hero-subtitle">
+          Distribuidor de desengrasantes de alta concentración, sistemas de contención de derrames y contenedores industriales en el sureste y Golfo de México.
+        </p>
 
         <div style="margin-top:36px">
-          <a href="#cotizar" class="btn-primary" style="height:52px;padding:0 28px;font-size:16px">
+          <a href="#cotizar" class="btn-primary" style="height:50px;padding:0 28px;font-size:15px">
             Solicitar Cotización
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
 
-        <div style="margin-top:28px;display:flex;align-items:center;gap:16px;color:rgba(255,255,255,0.6);font-size:13px;font-weight:500">
-          <span>✓ Sin costo ni compromiso</span>
-          <span>·</span>
-          <span>✓ Emisión de facturas</span>
+        <div style="margin-top:24px;color:rgba(255,255,255,0.65);font-size:13px;font-weight:500">
+          ✓ Emisión formal de comprobantes fiscales
         </div>
       </div>
 
-     <!-- ===================================================================
-           COLUMNA DERECHA: IMAGEN PRINCIPAL CENTRALIZADA (HERO)
-           Reemplaza los SVGs flotantes individuales por un contenedor único.
-           =================================================================== -->
+      <!-- Placeholder temporal 4:3 para fotografía del Hero -->
       <div class="hero-media-wrapper">
-
-        <!-- 1. PLACEHOLDER TEMPORAL (Activo mientras preparas tu imagen) -->
         <div class="hero-image-placeholder">
-          <!-- Icono SVG representativo de imagen -->
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2"/>
             <circle cx="8.5" cy="8.5" r="1.5"/>
             <path d="M21 15l-5-5L5 21"/>
           </svg>
-          
-          <div style="font-size:15px; font-weight:600; color:#ffffff;">
-            [ Imagen Principal de Suministros ]
+          <div style="font-size:14px;font-weight:600;color:#ffffff;">
+            [ Fotografía de Suministro Industrial 4:3 ]
           </div>
-          
-          <p style="font-size:12px; color:#94A3B8; max-width:280px; margin:0; line-height:1.4;">
-            Espacio reservado para una sola fotografía o render de producto (Formato recomendado: PNG transparente o WebP 800x600 px).
-          </p>
+          <div style="font-size:12px;color:#94A3B8;max-width:280px;line-height:1.4;">
+            Espacio reservado para una sola imagen optimizada (PNG sin fondo o WebP).
+          </div>
         </div>
-
-        <!-- 2. IMAGEN FINAL (Descomenta esta etiqueta cuando tengas el archivo)
-        <img 
-          src="assets/hero-productos.png" 
-          alt="Insumos industriales, contenedores y kits de derrame RIOAZA" 
-          class="hero-main-img"
-        >
-        -->
-
       </div>
     </div>
   </section>
-  <!-- ================= FORMULARIO RÁPIDO DE COTIZACIÓN ================= -->
-  <section id="cotizar" style="background:var(--color-bg-light);padding:80px 24px">
-    <div style="max-width:960px;margin:0 auto">
+
+  <!-- ================= FORMULARIO RÁPIDO ================= -->
+  <section id="cotizar" style="background:var(--color-bg-light);padding:72px 24px">
+    <div style="max-width:920px;margin:0 auto">
       <div class="form-card">
-        <div style="padding-bottom:20px;border-bottom:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center">
-          <span class="schib" style="font-size:12px;font-weight:600;color:var(--color-muted)">Distribuidor</span>
-          <span class="schib" style="font-size:12px;font-weight:600;color:var(--color-muted)">Emisión de facturas</span>
+        <div style="padding-bottom:18px;border-bottom:1px solid var(--color-border);display:flex;justify-content:space-between;align-items:center">
+          <span class="schib" style="font-size:11px;font-weight:600;color:var(--color-muted)">Distribuidor Corporativo</span>
+          <span class="schib" style="font-size:11px;font-weight:600;color:var(--color-muted)">Emisión de facturas</span>
         </div>
 
-        <h2 class="fustat" style="margin:24px 0 8px;font-weight:700;font-size:32px;color:var(--color-primary)">{{ quoteTitle }}</h2>
-        <p style="font-size:15px;color:var(--color-muted)">Completa los datos y te enviamos la propuesta comercial formal a tu correo.</p>
+        <h2 class="fustat" style="margin:20px 0 8px;font-weight:700;font-size:30px;color:var(--color-primary)">Requerimiento de cotización</h2>
+        <p style="font-size:14px;color:var(--color-muted)">Ingresa los datos de tu empresa para enviar la propuesta comercial formal a tu correo.</p>
 
-        <!-- Formulario 1 con Data Attribute unificado -->
         <form data-quote-form>
           <div class="form-grid-2">
             <label class="form-label">
-              <span>Categoría de insumo *</span>
+              <span>Línea requerida *</span>
               <select name="category" class="form-input" required>
-                <option value="">Selecciona una categoría</option>
-                <option value="Limpieza Industrial">Limpieza Industrial</option>
-                <option value="Kit de Derrame & Seguridad">Kit de Derrame &amp; Seguridad</option>
-                <option value="Tarimas & Logística">Tarimas &amp; Logística</option>
+                <option value="">Selecciona una opción</option>
+                <option value="Limpieza Industrial y Desengrasantes">Limpieza Industrial y Desengrasantes</option>
+                <option value="Sistemas de Contención y Kits de Derrame">Sistemas de Contención y Kits de Derrame</option>
+                <option value="Almacenamiento y Contenedores IBC">Almacenamiento y Contenedores IBC</option>
                 <option value="Insumos Institucionales">Insumos Institucionales</option>
               </select>
             </label>
             <label class="form-label">
-              <span>Cantidad / Frecuencia</span>
-              <input type="text" name="quantity" placeholder="Ej. 200L mensuales" class="form-input">
+              <span>Empresa / Razón Social *</span>
+              <input type="text" name="company" placeholder="Nombre fiscal de la empresa" class="form-input" required>
             </label>
             <label class="form-label">
               <span>Correo corporativo *</span>
-              <input type="email" name="user_email" placeholder="compras@empresa.mx" class="form-input" required>
+              <input type="email" name="user_email" placeholder="compras@tuempresa.mx" class="form-input" required>
             </label>
             <label class="form-label">
-              <span>Empresa / Razón Social *</span>
-              <input type="text" name="company" placeholder="Nombre de la empresa" class="form-input" required>
+              <span>Teléfono de contacto *</span>
+              <input type="tel" name="user_phone" placeholder="10 dígitos (ej. 9381234567)" class="form-input" required>
             </label>
           </div>
 
-          <!-- Recuadro interactivo Turnstile -->
+          <!-- Recuadro Turnstile -->
           <div class="turnstile-wrapper">
             <div class="cf-turnstile" data-sitekey="TU_TURNSTILE_SITEKEY" data-theme="light"></div>
           </div>
 
-          <button type="submit" class="btn-primary" style="width:100%;height:52px;margin-top:12px">
+          <button type="submit" class="btn-primary" style="width:100%;height:50px;margin-top:10px">
             Solicitar Cotización
           </button>
 
-          <!-- Banner dinámico de respuesta -->
           <div class="form-feedback"></div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ================= MARCAS DISTRIBUIDAS ================= -->
-  <section style="background:#ffffff;padding:40px 24px;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)">
-    <div class="container" style="text-align:center">
-      <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-muted)">Distribuidor de marcas líderes</div>
-      <div style="margin-top:20px;display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:24px;filter:grayscale(1);opacity:0.65">
+  <!-- ================= MARCAS ALINEADAS ================= -->
+  <section class="brands-strip">
+    <div class="container">
+      <div class="schib" style="font-size:11px;font-weight:600;color:var(--color-muted)">Marcas distribuidas</div>
+      <div class="brands-flex">
         <span class="fustat" style="font-weight:800;font-size:22px">Swipe</span>
         <span class="fustat" style="font-weight:800;font-size:24px">3M</span>
         <span class="fustat" style="font-weight:700;font-size:18px">Kimberly-Clark</span>
@@ -575,172 +182,117 @@
     </div>
   </section>
 
-  <!-- ================= SOLUCIONES INTEGRALES (SIN VER SOLUCIONES NI FLECHAS) ================= -->
+  <!-- ================= SOLUCIONES (3 PILARES) ================= -->
   <section id="soluciones" class="section-py">
     <div class="container">
-      <div style="max-width:720px;margin:0 auto;text-align:center">
-        <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Soluciones integrales</div>
-        <h2 class="fustat" style="margin:12px 0 16px;font-weight:700;font-size:36px;color:var(--color-primary)">{{ solutionsTitle }}</h2>
-        <p style="font-size:16px;color:var(--color-muted)">Consolida tu compra de limpieza, seguridad y logística con un distribuidor formal con cobertura regional.</p>
+      <div style="max-width:680px">
+        <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Líneas operativas</div>
+        <h2 class="fustat" style="margin:10px 0 14px;font-weight:700;font-size:34px;color:var(--color-primary)">Soluciones de suministro integral</h2>
+        <p style="font-size:15px;color:var(--color-muted)">Consolidación de compras para operaciones marinas, portuarias e industriales con despacho formal.</p>
       </div>
 
       <div class="solutions-grid">
         <div class="card-solution">
-          <h3 style="font-size:22px;font-weight:600;color:var(--color-primary)">Limpieza Industrial</h3>
-          <p style="margin:12px 0 16px;font-size:15px;line-height:1.55;color:var(--color-muted)">Desengrasantes y detergentes concentrados formulados para instalaciones industriales pesadas.</p>
-          <ul style="list-style:none;display:grid;gap:8px;font-size:14px;color:#334155">
-            <li>✓ Swipe Magic y Greenco Green 1500</li>
-            <li>✓ Multiusos de alta concentración</li>
-            <li>✓ Detergentes institucionales</li>
+          <h3 style="font-size:20px;font-weight:600;color:var(--color-primary)">Limpieza &amp; Desengrase Industrial</h3>
+          <p style="margin:12px 0 16px;font-size:14px;color:var(--color-muted);line-height:1.6">Formulaciones químicas de alta concentración para desengrase pesado de maquinaria y cubiertas.</p>
+          <ul style="list-style:none;display:grid;gap:8px;font-size:13px;color:#334155">
+            <li>✓ Swipe Magic concentrado</li>
+            <li>✓ Greenco Green 1500</li>
+            <li>✓ Desengrasantes base agua biodegradables</li>
           </ul>
         </div>
 
         <div class="card-solution">
-          <h3 style="font-size:22px;font-weight:600;color:var(--color-primary)">Seguridad &amp; Kits de Derrame</h3>
-          <p style="margin:12px 0 16px;font-size:15px;line-height:1.55;color:var(--color-muted)">Equipamiento completo para contención de derrames de hidrocarburos y productos químicos.</p>
-          <ul style="list-style:none;display:grid;gap:8px;font-size:14px;color:#334155">
-            <li>✓ Kits universales y absorbentes industriales</li>
-            <li>✓ Equipo de protección personal especializado</li>
-            <li>✓ Contenedores HAZMAT</li>
+          <h3 style="font-size:20px;font-weight:600;color:var(--color-primary)">Contención &amp; Kits de Derrame</h3>
+          <p style="margin:12px 0 16px;font-size:14px;color:var(--color-muted);line-height:1.6">Equipamiento normativo para respuesta inmediata ante contingencias de hidrocarburos.</p>
+          <ul style="list-style:none;display:grid;gap:8px;font-size:13px;color:#334155">
+            <li>✓ Kits universales de 95L a 400L</li>
+            <li>✓ Cordones, almohadillas y rollos absorbentes</li>
+            <li>✓ Contenedores rotomoldeados</li>
           </ul>
         </div>
 
         <div class="card-solution">
-          <h3 style="font-size:22px;font-weight:600;color:var(--color-primary)">Logística Industrial</h3>
-          <p style="margin:12px 0 16px;font-size:15px;line-height:1.55;color:var(--color-muted)">Tarimas de madera, plástico y anti-derrame. Contenedores IBC y tanques cerrados.</p>
-          <ul style="list-style:none;display:grid;gap:8px;font-size:14px;color:#334155">
-            <li>✓ Tarimas de alta capacidad de carga</li>
-            <li>✓ IBC 1000L y Tambos 200L</li>
-            <li>✓ Soluciones de almacenamiento temporal</li>
-          </ul>
-        </div>
-
-        <div class="card-solution">
-          <h3 style="font-size:22px;font-weight:600;color:var(--color-primary)">Insumos Institucionales</h3>
-          <p style="margin:12px 0 16px;font-size:15px;line-height:1.55;color:var(--color-muted)">Higiénicos, toallas en rollo, jabones y consumibles para instalaciones de alto tráfico.</p>
-          <ul style="list-style:none;display:grid;gap:8px;font-size:14px;color:#334155">
-            <li>✓ Kimberly-Clark y Elite Empresas</li>
-            <li>✓ Sistemas de dispensación</li>
-            <li>✓ Consumibles sanitarios al por mayor</li>
+          <h3 style="font-size:20px;font-weight:600;color:var(--color-primary)">Manejo &amp; Almacenamiento</h3>
+          <p style="margin:12px 0 16px;font-size:14px;color:var(--color-muted);line-height:1.6">Envases de alta resistencia y tarimas de contención para manejo seguro de sustancias químicas.</p>
+          <ul style="list-style:none;display:grid;gap:8px;font-size:13px;color:#334155">
+            <li>✓ Contenedores IBC Tote de 1,000L</li>
+            <li>✓ Tambores cerrados de 200L</li>
+            <li>✓ Tarimas anti-derrame certificadas</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= COBERTURA GOLFO (PANEL PANORÁMICO CON PLACEHOLDER 4:3) ================= -->
-  <section id="cobertura" style="background:var(--color-primary);color:#fff" class="section-py">
+  <!-- ================= BASE DE SUMINISTRO (UBICACIÓN ESTRATÉGICA) ================= -->
+  <section id="presencia" style="background:var(--color-primary);color:#fff" class="section-py">
     <div class="container">
       <div style="max-width:720px">
-        <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Distribución estratégica</div>
-        <h2 class="fustat" style="margin:12px 0 0;font-weight:700;font-size:36px">Presencia estratégica en el sureste y Golfo de México</h2>
+        <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Presencia Física</div>
+        <h2 class="fustat" style="margin:10px 0 0;font-weight:700;font-size:34px">Base de suministro en Ciudad del Carmen</h2>
       </div>
 
-      <div class="coverage-card">
+      <div class="location-panel">
         <div>
-          <h3 style="font-size:22px;font-weight:600;margin-bottom:12px;color:#fff">Cobertura Operativa</h3>
-          <p style="font-size:15px;line-height:1.6;color:#94A3B8;margin-bottom:24px">
-            Atendemos directamente instalaciones portuarias, patios de maniobras y bases operativas a lo largo de los principales corredores industriales y marítimos.
+          <h3 style="font-size:22px;font-weight:600;margin-bottom:12px">Ubicación Estratégica en el Golfo</h3>
+          <p style="font-size:14px;line-height:1.6;color:#94A3B8;margin-bottom:20px">
+            Operamos desde Ciudad del Carmen, Campeche, atendiendo directamente muelles, patios de maniobras y bases operativas a lo largo de los principales corredores energéticos.
           </p>
-          <ul style="list-style:none;display:grid;gap:12px;font-size:14px;color:#CBD5E1">
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-brand-green)">◆</span> <strong>Campeche:</strong> Ciudad del Carmen y Seybaplaya</li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-brand-green)">◆</span> <strong>Tabasco:</strong> Villahermosa, Dos Bocas y Paraíso</li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-brand-green)">◆</span> <strong>Veracruz:</strong> Coatzacoalcos, Minatitlán y Puerto de Veracruz</li>
+          <ul style="list-style:none;display:grid;gap:10px;font-size:13px;color:#CBD5E1">
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-brand-green)">◆</span> <strong>Sede Operativa:</strong> Ciudad del Carmen, Campeche</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-brand-green)">◆</span> <strong>Tabasco:</strong> Villahermosa y Puerto Dos Bocas</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-brand-green)">◆</span> <strong>Veracruz:</strong> Coatzacoalcos y Puerto de Veracruz</li>
             <li style="display:flex;align-items:center;gap:8px"><span style="color:var(--color-brand-green)">◆</span> <strong>Tamaulipas:</strong> Tampico y Altamira</li>
           </ul>
         </div>
 
-        <!-- Placeholder 4:3 listo para mapa o fotografía de cobertura -->
-        <div class="coverage-placeholder">
+        <!-- Placeholder 4:3 para Ubicación -->
+        <div class="location-placeholder">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <div style="font-size:13px;font-weight:500">[ Espacio asignado para Mapa / Fotografía de Cobertura 4:3 ]</div>
+          <div style="font-size:13px;font-weight:500">[ Fotografía de Instalaciones / Mapa 4:3 ]</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SECTORES QUE ATENDEMOS ================= -->
-  <section id="sectores" class="section-py" style="background:#fff">
+  <!-- ================= LÍNEAS DE SUMINISTRO FRECUENTE (3 PRODUCTOS SIMÉTRICOS) ================= -->
+  <section id="lineas-suministro" style="background:var(--color-bg-light)" class="section-py">
     <div class="container">
-      <div style="max-width:720px">
-        <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Sectores</div>
-        <h2 class="fustat" style="margin:12px 0 0;font-weight:700;font-size:36px;color:var(--color-primary)">Especialistas en industrias exigentes</h2>
+      <div style="max-width:700px">
+        <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Suministro continuo</div>
+        <h2 class="fustat" style="margin:8px 0 0;font-weight:700;font-size:34px;color:var(--color-primary)">Líneas de suministro frecuente</h2>
+        <p style="font-size:14px;color:var(--color-muted);margin-top:6px">Insumos de alta rotación para la industria. Manejamos requerimientos especializados adicionales bajo pedido.</p>
       </div>
 
-      <div style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
-        <div>
-          <h3 style="font-size:22px;font-weight:600;color:var(--color-primary);margin-bottom:12px">Sector Petrolero y Marítimo</h3>
-          <p style="font-size:15px;line-height:1.6;color:var(--color-muted);margin-bottom:20px">
-            Atención prioritaria para embarcaciones, muelles y plataformas con requerimientos rigurosos de seguridad e insumos industriales certificados.
-          </p>
-          <div style="padding:16px;background:var(--color-bg-light);border-left:3px solid var(--color-brand-green);border-radius:6px;font-size:14px;color:#334155">
-            Suministro continuo de insumos críticos con emisión formal de comprobantes fiscales.
+      <div class="supply-grid-3">
+        <!-- Producto 1 -->
+        <div class="supply-card">
+          <div class="supply-img-wrap">[ Swipe Magic 5L ]</div>
+          <div class="supply-body">
+            <h4 style="font-size:16px;font-weight:600;color:var(--color-primary)">Swipe Magic Industrial 5L</h4>
+            <div style="font-size:13px;color:var(--color-muted);margin-top:2px">Desengrasante de alta concentración</div>
+            <a href="#cotizar" class="btn-primary" style="margin-top:16px;width:100%;font-size:13px;padding:9px">Cotizar</a>
           </div>
         </div>
 
-        <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#1E293B,#0F172A);border-radius:16px;display:flex;align-items:center;justify-content:center;color:#94A3B8;font-size:13px">
-          [ Espacio asignado para Imagen de Sector ]
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CATÁLOGO (SIN DESCARGA DE PDF NI FICHAS MSDS) ================= -->
-  <section id="catalogo" style="background:var(--color-bg-light)" class="section-py">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px">
-        <div>
-          <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Catálogo</div>
-          <h2 class="fustat" style="margin:8px 0 0;font-weight:700;font-size:36px;color:var(--color-primary)">Insumos más solicitados</h2>
-        </div>
-      </div>
-
-      <div class="catalog-grid">
-        <!-- Tarjeta 1 -->
-        <div class="card-product">
-          <div style="aspect-ratio:1;background:#E2E8F0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--color-muted)">
-            [ Imagen Producto 1 ]
-          </div>
-          <div style="padding:20px">
-            <h4 style="font-size:16px;font-weight:600;color:var(--color-primary)">Swipe Magic 5L</h4>
-            <div style="font-size:13px;color:var(--color-muted);margin-top:2px">Desengrasante industrial</div>
-            <a href="#cotizar" class="btn-primary" style="margin-top:14px;width:100%;font-size:13px;padding:8px">Cotizar</a>
+        <!-- Producto 2 -->
+        <div class="supply-card">
+          <div class="supply-img-wrap">[ Kit de Derrame 95L ]</div>
+          <div class="supply-body">
+            <h4 style="font-size:16px;font-weight:600;color:var(--color-primary)">Kit de Derrame Marino 95L</h4>
+            <div style="font-size:13px;color:var(--color-muted);margin-top:2px">Absorbentes universales e hidrocarburos</div>
+            <a href="#cotizar" class="btn-primary" style="margin-top:16px;width:100%;font-size:13px;padding:9px">Cotizar</a>
           </div>
         </div>
 
-        <!-- Tarjeta 2 -->
-        <div class="card-product">
-          <div style="aspect-ratio:1;background:#E2E8F0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--color-muted)">
-            [ Imagen Producto 2 ]
-          </div>
-          <div style="padding:20px">
-            <h4 style="font-size:16px;font-weight:600;color:var(--color-primary)">Kit Derrame 95L</h4>
-            <div style="font-size:13px;color:var(--color-muted);margin-top:2px">Absorbentes universales</div>
-            <a href="#cotizar" class="btn-primary" style="margin-top:14px;width:100%;font-size:13px;padding:8px">Cotizar</a>
-          </div>
-        </div>
-
-        <!-- Tarjeta 3 -->
-        <div class="card-product">
-          <div style="aspect-ratio:1;background:#E2E8F0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--color-muted)">
-            [ Imagen Producto 3 ]
-          </div>
-          <div style="padding:20px">
-            <h4 style="font-size:16px;font-weight:600;color:var(--color-primary)">IBC Tote 1000L</h4>
-            <div style="font-size:13px;color:var(--color-muted);margin-top:2px">Almacenamiento industrial</div>
-            <a href="#cotizar" class="btn-primary" style="margin-top:14px;width:100%;font-size:13px;padding:8px">Cotizar</a>
-          </div>
-        </div>
-
-        <!-- Tarjeta 4 -->
-        <div class="card-product">
-          <div style="aspect-ratio:1;background:#E2E8F0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--color-muted)">
-            [ Imagen Producto 4 ]
-          </div>
-          <div style="padding:20px">
-            <h4 style="font-size:16px;font-weight:600;color:var(--color-primary)">Papel Elite JR</h4>
-            <div style="font-size:13px;color:var(--color-muted);margin-top:2px">Insumo institucional</div>
-            <a href="#cotizar" class="btn-primary" style="margin-top:14px;width:100%;font-size:13px;padding:8px">Cotizar</a>
+        <!-- Producto 3 -->
+        <div class="supply-card">
+          <div class="supply-img-wrap">[ Contenedor IBC 1000L ]</div>
+          <div class="supply-body">
+            <h4 style="font-size:16px;font-weight:600;color:var(--color-primary)">Contenedor IBC Tote 1,000L</h4>
+            <div style="font-size:13px;color:var(--color-muted);margin-top:2px">Grado químico con jaula metálica</div>
+            <a href="#cotizar" class="btn-primary" style="margin-top:16px;width:100%;font-size:13px;padding:9px">Cotizar</a>
           </div>
         </div>
       </div>
@@ -749,11 +301,10 @@
 
   <!-- ================= FORMULARIO COMPLETO DE CONTACTO ================= -->
   <section id="contacto" style="background:var(--color-primary);color:#fff" class="section-py">
-    <div class="container" style="display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:start">
-      <!-- Formulario 2 con Data Attribute unificado -->
+    <div class="container contact-layout">
       <div class="form-card">
-        <h2 class="fustat" style="margin:0 0 6px;font-weight:700;font-size:28px;color:var(--color-primary)">Solicita tu cotización formal</h2>
-        <p style="margin:0 0 24px;font-size:14px;color:var(--color-muted)">Recibe la propuesta técnica y comercial directamente en tu correo.</p>
+        <h2 class="fustat" style="margin:0 0 6px;font-weight:700;font-size:26px;color:var(--color-primary)">Solicita tu cotización formal</h2>
+        <p style="margin:0;font-size:13px;color:var(--color-muted)">Atención directa a departamentos de compras y operaciones.</p>
 
         <form data-quote-form>
           <div class="form-grid-2">
@@ -775,54 +326,54 @@
             </label>
           </div>
 
-          <label class="form-label" style="margin-top:16px">
-            <span>Insumos y cantidades a cotizar *</span>
-            <textarea name="message" rows="3" class="form-input" style="height:auto;padding:12px" required></textarea>
-          </label>
+          <!-- Texto descriptivo en lugar de textarea -->
+          <div class="form-notice">
+            Captura tus datos y un ejecutivo de nuestra área comercial se pondrá en contacto directo para atender los requerimientos de tu operación.
+          </div>
 
-          <!-- Recuadro interactivo Turnstile -->
+          <!-- Recuadro Turnstile -->
           <div class="turnstile-wrapper">
             <div class="cf-turnstile" data-sitekey="TU_TURNSTILE_SITEKEY" data-theme="light"></div>
           </div>
 
-          <button type="submit" class="btn-primary" style="width:100%;height:52px;margin-top:12px">
+          <button type="submit" class="btn-primary" style="width:100%;height:50px;margin-top:12px">
             Solicitar Cotización
           </button>
 
-          <!-- Banner dinámico de respuesta -->
           <div class="form-feedback"></div>
         </form>
       </div>
 
-      <!-- Datos de ubicación y oficina -->
-      <div style="padding-top:12px">
+      <!-- Datos de Ubicación Física -->
+      <div style="padding-top:10px">
         <div class="schib" style="font-size:12px;font-weight:600;color:var(--color-brand-green)">Atención directa</div>
-        <h3 class="fustat" style="margin:12px 0 16px;font-weight:700;font-size:26px">Ciudad del Carmen, Campeche</h3>
+        <h3 class="fustat" style="margin:10px 0 14px;font-weight:700;font-size:26px">Ciudad del Carmen, Campeche</h3>
         <div style="font-size:14px;color:#94A3B8;line-height:1.7">
-          <div>Rioaza Matas S.A. de C.V.</div>
+          <div style="color:#ffffff;font-weight:600">Rioaza Matas S.A. de C.V.</div>
           <div>Av. Industrial 240, Col. Aviación</div>
           <div>Cd. del Carmen, Campeche, C.P. 24140</div>
         </div>
 
-        <div style="margin-top:32px;display:grid;gap:16px">
-          <div style="padding:16px;background:#1E293B;border:1px solid #334155;border-radius:12px">
-            <div style="font-size:14px;font-weight:600;color:#fff">Atención Comercial B2B</div>
-            <div style="font-size:13px;color:#CBD5E1;margin-top:4px">contacto@rioaza.mx</div>
-          </div>
+        <div style="margin-top:28px;padding:18px;background:var(--color-secondary);border:1px solid #334155;border-radius:12px">
+          <div style="font-size:13px;font-weight:600;color:#ffffff">Contacto Comercial</div>
+          <div style="font-size:13px;color:#CBD5E1;margin-top:4px">contacto@rioaza.mx</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer style="background:#020617;color:#94A3B8;padding:60px 24px 32px">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
-      <div>
-        <span class="fustat" style="font-weight:800;font-size:22px;color:#fff">RIOAZA</span>
-        <p style="font-size:13px;color:#64748B;margin-top:6px">Distribuidor B2B de insumos para la industria pesada del Golfo de México.</p>
+  <footer class="site-footer">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="assets/rioaza-mascot.png" alt="Logotipo RIOAZA" style="height:36px;width:auto;">
+        <div>
+          <span class="fustat" style="font-weight:800;font-size:18px;color:#fff">RIOAZA</span>
+          <p style="font-size:12px;color:#64748B">Distribución y suministro especializado para la industria del Golfo de México.</p>
+        </div>
       </div>
       <div style="font-size:12px;color:#64748B">
-        © <span>{{ year }}</span> Rioaza Matas S.A. de C.V. — Emisión de facturas disponible.
+        © <span id="currentYear"></span> Rioaza Matas S.A. de C.V. — Emisión de facturas disponible.
       </div>
     </div>
   </footer>
@@ -830,29 +381,25 @@
 </div>
 </x-dc>
 
-<!-- ================= SCRIPT DE CONTROL UNIFICADO ================= -->
+<!-- ================= JAVASCRIPT DE CONTROL UNIFICADO ================= -->
 <script>
-  /* ==========================================================================
-     1. PARÁMETROS Y CREDENCIALES CENTRALIZADAS
-     ========================================================================== */
+  // Año dinámico
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+  /* 1. Credenciales centralizadas */
   const APP_CONFIG = {
     emailjs: {
-      publicKey: "TU_PUBLIC_KEY_AQUI",   // Sustituir por tu Public Key de EmailJS
-      serviceId: "TU_SERVICE_ID_AQUI",   // Sustituir por tu Service ID de EmailJS
-      templateId: "TU_TEMPLATE_ID_AQUI"  // Sustituir por tu Template ID de EmailJS
+      publicKey: "TU_PUBLIC_KEY_AQUI",
+      serviceId: "TU_SERVICE_ID_AQUI",
+      templateId: "TU_TEMPLATE_ID_AQUI"
     }
   };
 
-  // Inicializar SDK de EmailJS una única vez
   if (window.emailjs) {
     emailjs.init(APP_CONFIG.emailjs.publicKey);
-  } else {
-    console.warn("EmailJS SDK no detectado.");
   }
 
-  /* ==========================================================================
-     2. CONTROLADOR DE MENÚ RESPONSIVO (MÓVIL / TABLET)
-     ========================================================================== */
+  /* 2. Menú móvil */
   const menuToggleBtn = document.getElementById("menuToggleBtn");
   const mobileDrawer = document.getElementById("mobileDrawer");
 
@@ -860,66 +407,40 @@
     menuToggleBtn.addEventListener("click", () => {
       mobileDrawer.classList.toggle("is-open");
     });
-
     mobileDrawer.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileDrawer.classList.remove("is-open");
-      });
+      link.addEventListener("click", () => mobileDrawer.classList.remove("is-open"));
     });
   }
 
-  /* ==========================================================================
-     3. REGLAS DE VALIDACIÓN PREVIA (CORREO CORPORATIVO Y TELÉFONO)
-     ========================================================================== */
+  /* 3. Validaciones de correo corporativo y teléfono */
   function validateCorporateEmail(email) {
     const cleanEmail = email.trim().toLowerCase();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
     if (!emailRegex.test(cleanEmail)) {
-      return { 
-        isValid: false, 
-        errorMsg: "Por favor ingresa un formato de correo electrónico válido." 
-      };
+      return { isValid: false, errorMsg: "Por favor ingresa un formato de correo electrónico válido." };
     }
-
-    // Lista de exclusión de dominios gratuitos populares
     const freeDomains = ["gmail.com", "hotmail.com", "outlook.com", "yahoo.com", "live.com", "icloud.com"];
     const domain = cleanEmail.split("@")[1];
-
     if (freeDomains.includes(domain)) {
-      return { 
-        isValid: false, 
-        errorMsg: "Por favor ingresa un correo corporativo de tu empresa (evita cuentas de Gmail o Hotmail)." 
-      };
+      return { isValid: false, errorMsg: "Por favor ingresa un correo corporativo de tu empresa (evita cuentas de Gmail o Hotmail)." };
     }
-
     return { isValid: true, errorMsg: "" };
   }
 
   function validatePhoneNumber(phone) {
     let digits = phone.replace(/\D/g, "");
-
-    // Si incluye prefijo 52 de México y suma 12 dígitos, remover prefijo
     if (digits.length === 12 && digits.startsWith("52")) {
       digits = digits.substring(2);
     }
-
     if (digits.length !== 10) {
-      return { 
-        isValid: false, 
-        errorMsg: "El teléfono debe contener 10 dígitos numéricos (ej. 9381234567)." 
-      };
+      return { isValid: false, errorMsg: "El teléfono debe contener 10 dígitos numéricos (ej. 9381234567)." };
     }
-
     return { isValid: true, errorMsg: "" };
   }
 
-  /* ==========================================================================
-     4. RENDERIZADOR DEL BANNER VISUAL DE CONFIRMACIÓN
-     ========================================================================== */
+  /* 4. Renderizador de feedback */
   function renderFeedbackBanner(feedbackElement, message, stateType) {
     if (!feedbackElement) return;
-
     feedbackElement.className = "form-feedback";
     let iconHtml = "";
 
@@ -939,13 +460,10 @@
     feedbackElement.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
-  /* ==========================================================================
-     5. MANEJADOR UNIFICADO DE FORMULARIOS CON TURNSTILE Y EMAILJS
-     ========================================================================== */
+  /* 5. Manejador de formularios */
   function attachQuoteFormHandler(formElement) {
     formElement.addEventListener("submit", function(event) {
       event.preventDefault();
-
       const form = event.target;
       const submitBtn = form.querySelector("button[type='submit']");
       const feedback = form.querySelector(".form-feedback");
@@ -953,7 +471,6 @@
       const phoneInput = form.querySelector('input[type="tel"]');
       const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]');
 
-      // 1. Validación previa de correo corporativo
       if (emailInput) {
         const emailValidation = validateCorporateEmail(emailInput.value);
         if (!emailValidation.isValid) {
@@ -963,7 +480,6 @@
         }
       }
 
-      // 2. Validación previa de teléfono (si el campo existe)
       if (phoneInput && phoneInput.value.trim() !== "") {
         const phoneValidation = validatePhoneNumber(phoneInput.value);
         if (!phoneValidation.isValid) {
@@ -973,23 +489,16 @@
         }
       }
 
-      // 3. Verificación de la casilla de seguridad Cloudflare Turnstile
       if (!turnstileResponse || !turnstileResponse.value) {
-        renderFeedbackBanner(
-          feedback, 
-          "Por favor completa la casilla de seguridad antes de enviar.", 
-          "warning"
-        );
+        renderFeedbackBanner(feedback, "Por favor completa la casilla de seguridad antes de enviar.", "warning");
         return;
       }
 
-      // 4. Bloqueo temporal y estado visual de carga
       const originalText = submitBtn.innerText;
       submitBtn.disabled = true;
       submitBtn.innerText = "Enviando cotización...";
       if (feedback) feedback.style.display = "none";
 
-      // 5. Despacho asíncrono vía EmailJS
       emailjs.sendForm(
         APP_CONFIG.emailjs.serviceId,
         APP_CONFIG.emailjs.templateId,
@@ -997,22 +506,20 @@
       )
       .then(() => {
         renderFeedbackBanner(
-          feedback, 
-          "¡Solicitud enviada con éxito! Te contactaremos a la brevedad con tu cotización formal.", 
+          feedback,
+          "¡Solicitud enviada con éxito! Nuestro equipo comercial se comunicará contigo formalmente.",
           "success"
         );
         form.reset();
-
-        // Reiniciar widget de Turnstile
         if (window.turnstile) {
           turnstile.reset(form.querySelector(".cf-turnstile"));
         }
       })
       .catch((error) => {
-        console.error("Error al despachar el formulario:", error);
+        console.error("Error EmailJS:", error);
         renderFeedbackBanner(
-          feedback, 
-          "Hubo un problema de conexión al procesar la cotización. Por favor intenta de nuevo.", 
+          feedback,
+          "Hubo un problema de conexión al procesar la cotización. Por favor intenta de nuevo.",
           "error"
         );
       })
@@ -1023,26 +530,7 @@
     });
   }
 
-  // Inicializar todos los formularios con data-quote-form
   document.querySelectorAll("form[data-quote-form]").forEach(attachQuoteFormHandler);
-</script>
-
-<!-- Script dinámico del componente DCLogic -->
-<script type="text/x-dc" data-dc-script data-props="{&quot;heroBadge&quot;:{&quot;default&quot;:&quot;Distribuidor B2B&quot;},&quot;heroL1&quot;:{&quot;default&quot;:&quot;Insumos industriales.&quot;},&quot;heroL2&quot;:{&quot;default&quot;:&quot;Estándar petrolero.&quot;},&quot;heroL3a&quot;:{&quot;default&quot;:&quot;Impacto ambiental&quot;},&quot;heroL3b&quot;:{&quot;default&quot;:&quot;cero.&quot;},&quot;heroSubtitle&quot;:{&quot;default&quot;:&quot;Distribuidor de productos de limpieza, kits de derrame y logística para la industria pesada del Golfo de México.&quot;},&quot;quoteTitle&quot;:{&quot;default&quot;:&quot;Cuéntanos qué necesitas y te enviamos precio.&quot;},&quot;solutionsTitle&quot;:{&quot;default&quot;:&quot;Todo lo que tu operación necesita, un solo proveedor&quot;}}">
-class Component extends DCLogic {
-  renderVals() {
-    return {
-      heroL1: this.props.heroL1 ?? 'Insumos industriales.',
-      heroL2: this.props.heroL2 ?? 'Estándar petrolero.',
-      heroL3a: this.props.heroL3a ?? 'Impacto ambiental',
-      heroL3b: this.props.heroL3b ?? 'cero.',
-      heroSubtitle: this.props.heroSubtitle ?? 'Distribuidor de productos de limpieza, kits de derrame y logística para la industria pesada del Golfo de México.',
-      quoteTitle: this.props.quoteTitle ?? 'Cuéntanos qué necesitas y te enviamos precio.',
-      solutionsTitle: this.props.solutionsTitle ?? 'Todo lo que tu operación necesita, un solo proveedor',
-      year: new Date().getFullYear(),
-    };
-  }
-}
 </script>
 </body>
 </html>
